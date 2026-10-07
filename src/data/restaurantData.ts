@@ -3,8 +3,8 @@ export interface MenuItem {
   name: string;
   category: string;
   description: string;
-  price: number | null; // null if price available at cafe
-  priceDisplay?: string; // e.g. "₹120" or "₹ Price at cafe"
+  price: number;
+  priceDisplay: string;
   isVeg: boolean;
   isFeatured?: boolean;
   image: string;
@@ -116,7 +116,7 @@ export const restaurantData: RestaurantConfig = {
   categories: [
     "All",
     "Customer Favourites",
-    "Snacks & Puffs",
+    "Samosa & Puffs",
     "Sandwiches",
     "Momos",
     "Street Food & Chaat",
@@ -129,59 +129,73 @@ export const restaurantData: RestaurantConfig = {
   ],
 
   menu: [
-    // --- Snacks & Puffs ---
+    // --- Samosa & Puffs (Primary Hot Specials) ---
+    {
+      id: "snack-samosa",
+      name: "Hot Crispy Desi Samosa (2 Pcs)",
+      category: "Samosa & Puffs",
+      description: "Crispy, deep-fried golden pastry crust stuffed with aromatic spiced mashed potatoes, green peas, roasted cashews, and raisins. Served piping hot with tangy saunth and mint chutney.",
+      price: 30,
+      priceDisplay: "₹30",
+      isVeg: true,
+      isFeatured: true,
+      badge: "Banner Special",
+      spiceLevel: "Medium",
+      ingredients: ["Spiced Potato Filling", "Green Peas", "Roasted Cumin", "Mint Chutney", "Tamarind Saunth"],
+      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
+    },
     {
       id: "snack-1",
       name: "Crispy Vegetable Puffs",
-      category: "Snacks & Puffs",
-      description: "Flaky, golden-baked multi-layered puff pastry filled with spiced potato, sweet peas, and authentic desi seasoning. Our signature known customer favourite.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      category: "Samosa & Puffs",
+      description: "Flaky, golden-baked multi-layered puff pastry filled with spiced potato, sweet peas, and authentic desi seasoning. Our signature customer favourite.",
+      price: 35,
+      priceDisplay: "₹35",
       isVeg: true,
       isFeatured: true,
       badge: "Signature Pick",
       spiceLevel: "Medium",
       ingredients: ["Flaky Puff Pastry", "Spiced Potatoes", "Sweet Peas", "Roasted Cumin", "House Dip"],
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "snack-2",
       name: "Paneer Bhurji Stuffed Puff",
-      category: "Snacks & Puffs",
+      category: "Samosa & Puffs",
       description: "Golden flaky puff pastry stuffed with spiced crumbled cottage cheese, chopped onions, and fresh coriander.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 50,
+      priceDisplay: "₹50",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Fresh Paneer", "Crushed Spices", "Butter Puff Pastry", "Green Chillies"],
-      image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "snack-3",
       name: "Melting Double Cheese Puff",
-      category: "Snacks & Puffs",
+      category: "Samosa & Puffs",
       description: "Crisp baked golden puff oozing with warm mozzarella and cheddar cheese blend with mild Italian seasoning.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 65,
+      priceDisplay: "₹65",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Mozzarella Cheese", "Cheddar Cheese", "Herb Seasoning", "Flaky Dough"],
-      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "snack-4",
       name: "Crispy Masala French Fries",
-      category: "Snacks & Puffs",
+      category: "Samosa & Puffs",
       description: "Hot, freshly fried golden potato fries dusted with zesty peri-peri chaat masala. Served with spicy dip.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 90,
+      priceDisplay: "₹90",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Crisp Potatoes", "Peri-Peri Seasoning", "Chaat Masala"],
-      image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- Sandwiches ---
@@ -190,163 +204,177 @@ export const restaurantData: RestaurantConfig = {
       name: "Grilled Veg & Cheese Club Sandwich",
       category: "Sandwiches",
       description: "Triple-decker toasted sandwich packed with fresh bell peppers, cucumber, tomatoes, and melted mozzarella cheese.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 120,
+      priceDisplay: "₹120",
       isVeg: true,
       isFeatured: true,
       badge: "Popular Pick",
       spiceLevel: "Mild",
       ingredients: ["Amul Butter", "Mozzarella Cheese", "Bell Peppers", "Tomatoes", "Mint Chutney"],
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "sw-2",
       name: "Paneer Tikka Grilled Sandwich",
       category: "Sandwiches",
       description: "Tandoori spiced paneer cubes, mint chutney, crispy capsicum, and premium butter-toasted sandwich bread.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 140,
+      priceDisplay: "₹140",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Tandoori Paneer", "Capsicum", "Onions", "Spiced Herb Spread"],
-      image: "https://images.unsplash.com/photo-1554433607-66b5efe9d304?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1554433607-66b5efe9d304?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "sw-3",
       name: "Corn & Jalapeno Cheesy Toast",
       category: "Sandwiches",
       description: "Sweet golden corn and spicy jalapenos in a gooey cheddar-cheese blend toasted to golden perfection.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 110,
+      priceDisplay: "₹110",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Sweet Corn", "Pickled Jalapenos", "Cheddar Cheese", "Cracked Pepper"],
-      image: "https://images.unsplash.com/photo-1619860860774-1e2e17343432?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1619860860774-1e2e17343432?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "sw-4",
       name: "Bombay Aloo Masala Toast Sandwich",
       category: "Sandwiches",
       description: "Traditional Mumbai street style spiced mashed aloo layer with crunchy onions and tangy sev sprinkled on top.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 80,
+      priceDisplay: "₹80",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Spiced Aloo", "Chaat Masala", "Fine Nylon Sev", "Butter Toast"],
-      image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- Momos ---
     {
       id: "mo-1",
-      name: "Steamed Vegetable Momos",
+      name: "Steamed Vegetable Momos (8 Pcs)",
       category: "Momos",
       description: "Delicate handmade dumplings stuffed with finely minced fresh veggies, ginger, and scallions. Served with fiery red garlic dip.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 90,
+      priceDisplay: "₹90",
       isVeg: true,
       isFeatured: true,
       badge: "Crowd Pick",
       spiceLevel: "Spicy",
       ingredients: ["Cabbage", "Carrots", "Spring Onions", "Fresh Ginger", "Red Garlic Dip"],
-      image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "mo-2",
-      name: "Crispy Kurkure Fried Momos",
+      name: "Crispy Kurkure Fried Momos (8 Pcs)",
       category: "Momos",
       description: "Crunchy crumb-coated deep-fried momos bursting with juicy spiced filling. Served with spicy schezwan dip and mayo.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 120,
+      priceDisplay: "₹120",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Crunchy Coating", "Minced Garden Veggies", "Schezwan Dip"],
-      image: "https://images.unsplash.com/photo-1625398407797-033100652e79?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1625398407797-033100652e79?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "mo-3",
-      name: "Tandoori Paneer Momos",
+      name: "Tandoori Paneer Momos (8 Pcs)",
       category: "Momos",
       description: "Juicy paneer momos marinated in spiced hung curd and roasted with onions and capsicum.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 150,
+      priceDisplay: "₹150",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Paneer Filling", "Tandoori Marinade", "Mint Chutney"],
-      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "mo-4",
-      name: "Schezwan Gravy Momos",
+      name: "Schezwan Gravy Momos (8 Pcs)",
       category: "Momos",
       description: "Tossed momos wok-cooked in sizzling spicy schezwan gravy with capsicum and chopped spring onions.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 130,
+      priceDisplay: "₹130",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Spicy",
       ingredients: ["Schezwan Sauce", "Spring Onions", "Capsicum", "Steamed Momos"],
-      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- Street Food & Chaat ---
+    {
+      id: "st-samosa-chaat",
+      name: "Special Dausa Samosa Chaat",
+      category: "Street Food & Chaat",
+      description: "Crispy hot samosa crushed and smothered with warm spiced chole, sweet whipped curd, tamarind chutney, mint sauce, and nylon sev.",
+      price: 60,
+      priceDisplay: "₹60",
+      isVeg: true,
+      isFeatured: true,
+      badge: "Street Bestseller",
+      spiceLevel: "Medium",
+      ingredients: ["Crushed Desi Samosa", "Punjabi Chole", "Beaten Sweet Curd", "Saunth & Sev"],
+      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
+    },
     {
       id: "st-1",
       name: "Special Dausa Aloo Tikki Chaat",
       category: "Street Food & Chaat",
       description: "Golden griddle-crisped potato cutlet topped with spiced chole, sweetened beaten yoghurt, saunth and fresh mint chutney.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 70,
+      priceDisplay: "₹70",
       isVeg: true,
       isFeatured: true,
       badge: "Local Specialty",
       spiceLevel: "Medium",
       ingredients: ["Crispy Aloo Tikki", "Amritsari Chole", "Sweet Curd", "Tamarind Saunth", "Mint Chutney"],
-      image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "st-2",
       name: "Crispy Sev Puri / Papdi Chaat",
       category: "Street Food & Chaat",
       description: "Crisp flour wafers layered with boiled potatoes, chickpeas, chilled curd, fine nylon sev and pomegranate pearls.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 60,
+      priceDisplay: "₹60",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Crisp Papdi", "Boiled Potato & Chana", "Whipped Curd", "Nylon Sev"],
-      image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "st-3",
       name: "Mumbai Pav Bhaji with Butter Pav",
       category: "Street Food & Chaat",
       description: "Slow-simmered spiced mixed vegetable mash tossed in generous Amul butter, served with soft toasted pavs, onion and lemon.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 110,
+      priceDisplay: "₹110",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Butter Bhaji", "Toasted Pav", "Diced Onions", "Lemon Wedge"],
-      image: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "st-4",
       name: "Delhi Style Chole Bhature Platter",
       category: "Street Food & Chaat",
       description: "Two puffed golden bhatures served with dark spiced Punjabi chole, pickled carrots, and green chillies.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 130,
+      priceDisplay: "₹130",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["2 Fresh Bhature", "Spiced Punjabi Chole", "Pickled Salad"],
-      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- Fast Food & Burgers ---
@@ -355,26 +383,26 @@ export const restaurantData: RestaurantConfig = {
       name: "Crispy Aloo Herb Supreme Burger",
       category: "Fast Food & Burgers",
       description: "Handcrafted spiced potato & green pea patty topped with sliced tomatoes, crunchy onions, and house burger sauce.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 75,
+      priceDisplay: "₹75",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Herb Potato Patty", "Sesame Bun", "Crisp Lettuce", "Burger Sauce"],
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "ff-2",
       name: "Spicy Paneer Tikka Burger",
       category: "Fast Food & Burgers",
       description: "Crispy seasoned cottage cheese steak layered with fresh lettuce, molten cheese slice, and tandoori aioli in toasted sesame buns.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 110,
+      priceDisplay: "₹110",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Paneer Steak", "Cheese Slice", "Tandoori Aioli", "Toasted Bun"],
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- Pasta ---
@@ -383,40 +411,40 @@ export const restaurantData: RestaurantConfig = {
       name: "Creamy White Sauce Alfredo Pasta",
       category: "Pasta",
       description: "Penne pasta tossed in rich garlic parmesan cream sauce with sauteed bell peppers, sweet corn and Italian herbs.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 140,
+      priceDisplay: "₹140",
       isVeg: true,
       isFeatured: true,
       badge: "Chef's Special",
       spiceLevel: "Mild",
       ingredients: ["Penne Pasta", "Garlic Cream", "Parmesan & Mozzarella", "Sweet Corn", "Oregano"],
-      image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281729?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281729?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "pa-2",
       name: "Spicy Red Sauce Arrabbiata Pasta",
       category: "Pasta",
       description: "Penne tossed in slow-cooked san marzano tomato reduction with chilli flakes, basil, black olives, and cracked black pepper.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 130,
+      priceDisplay: "₹130",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Spicy",
       ingredients: ["Tomato Reduction", "Chilli Flakes", "Black Olives", "Fresh Basil"],
-      image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "pa-3",
       name: "Pink Sauce Creamy Herb Pasta",
       category: "Pasta",
       description: "The ideal blend of rich tomato sauce and velvety cream, loaded with seasonal veggies and mozzarella cheese pull.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 150,
+      priceDisplay: "₹150",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Tomato & Cream Blend", "Mozzarella Pull", "Mixed Peppers"],
-      image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- Chinese ---
@@ -425,52 +453,52 @@ export const restaurantData: RestaurantConfig = {
       name: "Desi Chilli Paneer (Dry / Gravy)",
       category: "Chinese",
       description: "Wok-tossed golden paneer cubes with crunchy bell peppers, onions, green chillies, and Indo-Chinese soya reduction.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 160,
+      priceDisplay: "₹160",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Spicy",
       ingredients: ["Cottage Cheese Cubes", "Wok Tossed Capsicum", "Dark Soya", "Green Chillies"],
-      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "ch-2",
       name: "Veg Hakka Chowmein Noodles",
       category: "Chinese",
       description: "Classic street-style stir-fried thin noodles with julienned cabbage, carrots, capsicum, spring onions, and fragrant aromatics.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 110,
+      priceDisplay: "₹110",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Medium",
       ingredients: ["Thin Noodles", "Julienned Veggies", "Garlic & Spring Onions", "Wok Seasoning"],
-      image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "ch-3",
       name: "Vegetable Fried Rice",
       category: "Chinese",
       description: "Fragrant basmati rice stir-fried in a high-flame wok with fresh garden vegetables, light soy sauce, and white pepper.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 110,
+      priceDisplay: "₹110",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Aromatic Basmati Rice", "Garden Veggies", "Light Soy", "Spring Onions"],
-      image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "ch-4",
       name: "Crispy Veg Manchurian Dry",
       category: "Chinese",
       description: "Golden fried vegetable dumplings tossed in garlic, ginger, chopped coriander, and spicy Indo-Chinese dark glaze.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 130,
+      priceDisplay: "₹130",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Spicy",
       ingredients: ["Minced Veg Balls", "Dark Glaze", "Ginger-Garlic", "Spring Onion Greens"],
-      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=85"
     },
 
     // --- North Indian & Rajasthani ---
@@ -479,96 +507,96 @@ export const restaurantData: RestaurantConfig = {
       name: "Paneer Butter Masala & Naan Platter",
       category: "North Indian",
       description: "Soft cottage cheese simmered in a luscious tomato cashew butter gravy, garnished with cream and served with freshly prepared tandoori breads.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 190,
+      priceDisplay: "₹190",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Fresh Cottage Cheese", "Cashew Tomato Gravy", "Amul Butter", "Fresh Cream"],
-      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "ni-2",
       name: "Slow-Cooked Dal Makhani",
       category: "North Indian",
       description: "Whole black lentils and kidney beans slow-cooked overnight with traditional butter and rich cream.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 160,
+      priceDisplay: "₹160",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Black Urad Dal", "Kidney Beans", "Desi Butter", "Slow Simmered Spices"],
-      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "raj-1",
       name: "Traditional Dal Baati Churma",
       category: "Rajasthani",
       description: "Authentic Rajasthani delicacy featuring baked wheat baatis dipped in pure desi ghee, served with panchmel dal and sweet grain churma.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 220,
+      priceDisplay: "₹220",
       isVeg: true,
       isFeatured: true,
       badge: "Regional Specialty",
       spiceLevel: "Medium",
       ingredients: ["Baked Wheat Baatis", "Pure Desi Ghee", "Panchmel Dal", "Sweet Grain Churma", "Garlic Chutney"],
-      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=85"
     },
 
-    // --- Beverages & Shakes ---
+    // --- Beverages & Shakes (Ultra Modern Aesthetic Visuals) ---
     {
       id: "bev-1",
-      name: "Rich Cold Coffee with Ice Cream",
+      name: "Modern Frosted Cold Coffee with Ice Cream",
       category: "Beverages & Shakes",
-      description: "Thick brewed espresso blended with chilled milk, chocolate drizzle, and topped with a scoop of vanilla ice cream.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      description: "Rich double-shot espresso blended with chilled creamy milk, chocolate ganache, topped with a luscious scoop of vanilla ice cream and dark cocoa dust in a frosted glass.",
+      price: 90,
+      priceDisplay: "₹90",
       isVeg: true,
       isFeatured: true,
-      badge: "Must Try",
+      badge: "Top Beverage",
       spiceLevel: "Mild",
-      ingredients: ["Brewed Espresso", "Chilled Full Cream Milk", "Vanilla Ice Cream", "Chocolate Syrup"],
-      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80"
+      ingredients: ["Double Shot Espresso", "Chilled Full Cream Milk", "Artisan Vanilla Scoop", "Dark Cocoa Dust"],
+      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=85"
     },
     {
       id: "bev-2",
       name: "Steaming Kulhad Masala Chai",
       category: "Beverages & Shakes",
       description: "Aromatic slow-brewed Indian tea infused with crushed cardamom, ginger, cloves, and served steaming in traditional clay kulhad.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 25,
+      priceDisplay: "₹25",
       isVeg: true,
       isFeatured: true,
       badge: "Clay Kulhad",
       spiceLevel: "Mild",
       ingredients: ["Fresh Ginger", "Green Cardamom", "Tea Leaves", "Clay Kulhad"],
-      image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "bev-3",
       name: "Thick Oreo Chocolate Shake",
       category: "Beverages & Shakes",
       description: "Crushed Oreo cookies blended with chocolate ice cream and rich creamy milk, topped with cookie crunch.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 110,
+      priceDisplay: "₹110",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Oreo Cookies", "Chocolate Ice Cream", "Chilled Milk", "Whip Topping"],
-      image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=85"
     },
     {
       id: "bev-4",
       name: "Fresh Mint Mojito Mocktail",
       category: "Beverages & Shakes",
       description: "Muddled fresh mint leaves, zesty lemon wedges, chilled sparkling soda, and crushed ice.",
-      price: null,
-      priceDisplay: "₹ Price at cafe",
+      price: 80,
+      priceDisplay: "₹80",
       isVeg: true,
       isFeatured: false,
       spiceLevel: "Mild",
       ingredients: ["Fresh Garden Mint", "Lemon Slices", "Sparkling Soda", "Crushed Ice"],
-      image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80"
+      image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=85"
     }
   ],
 
@@ -578,7 +606,7 @@ export const restaurantData: RestaurantConfig = {
       author: "Local Dausa Diner",
       rating: 4,
       date: "Google Review",
-      content: "Nice rooftop seating area with a cool breeze in the evening. The street food and sandwiches were fresh. Good place to hang out with friends in Vinayak Nagar.",
+      content: "Nice rooftop seating area with a cool breeze in the evening. The street food, samosas and sandwiches were fresh. Good place to hang out with friends in Vinayak Nagar.",
       highlight: "Nice rooftop sitting area",
       source: "Google"
     },
@@ -596,7 +624,7 @@ export const restaurantData: RestaurantConfig = {
       author: "Weekend Guest",
       rating: 3,
       date: "Google Review",
-      content: "Ambiance is relaxing and prices are within reasonable range (around ₹250-₹350). Service can be a bit slower during peak dinner hours, but the tea and puffs were enjoyable.",
+      content: "Ambiance is relaxing and prices are within reasonable range (around ₹200-₹350). Service can be a bit slower during peak dinner hours, but the samosas, tea and puffs were enjoyable.",
       highlight: "Relaxed ambiance & affordable",
       source: "Google"
     },
@@ -605,7 +633,7 @@ export const restaurantData: RestaurantConfig = {
       author: "Casual Patron",
       rating: 4,
       date: "Google Review",
-      content: "Good spot for fast food and chaat in Dausa. Tried the vegetable puffs and cold coffee, both were satisfying. Decent parking space nearby.",
+      content: "Good spot for fast food, samosa chaat and puffs in Dausa. Tried the cold coffee and fries, both were satisfying. Decent parking space nearby.",
       highlight: "Tasty snacks & easy parking",
       source: "Google"
     },
@@ -625,23 +653,23 @@ export const restaurantData: RestaurantConfig = {
       id: "gal-1",
       title: "Rooftop & Outdoor Seating",
       category: "Ambience",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",
       alt: "Mannat Cafe outdoor and rooftop open seating area",
       caption: "Spacious outdoor dining setup in Vinayak Nagar, Dausa with gentle open evening breezes."
     },
     {
       id: "gal-2",
-      title: "Fresh Baked Vegetable Puffs",
+      title: "Hot Crispy Desi Samosas & Puffs",
       category: "Food",
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=80",
-      alt: "Golden crispy vegetable puffs served hot",
-      caption: "Our renowned freshly baked Vegetable Puffs with seasoned potato masala."
+      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=85",
+      alt: "Golden crispy samosas and puffs served hot",
+      caption: "Our renowned freshly fried Desi Samosas and baked Vegetable Puffs with seasoned potato masala."
     },
     {
       id: "gal-3",
       title: "Cafe Interior & Cozy Booths",
       category: "Interior",
-      image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85",
       alt: "Warm wooden interior seating with soft lighting",
       caption: "Warm, welcoming indoor dining tables designed for casual conversations and family meals."
     },
@@ -649,7 +677,7 @@ export const restaurantData: RestaurantConfig = {
       id: "gal-4",
       title: "Sainthal Road Cafe Exterior",
       category: "Exterior",
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85",
       alt: "Front facade and approach on Sainthal Road",
       caption: "Conveniently accessible on Sainthal Road with drive-thru & takeaway parking space."
     },
@@ -657,7 +685,7 @@ export const restaurantData: RestaurantConfig = {
       id: "gal-5",
       title: "Artisanal Grilled Sandwiches",
       category: "Food",
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1200&q=85",
       alt: "Toasted club sandwich with melted cheese",
       caption: "Toasted to golden crunch with gourmet fillings and house dips."
     },
@@ -665,7 +693,7 @@ export const restaurantData: RestaurantConfig = {
       id: "gal-6",
       title: "Evening Ambience & Warm Lights",
       category: "Ambience",
-      image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=85",
       alt: "Evening lights and relaxed cafe terrace vibe",
       caption: "Warm evening lighting making Mannat a favorite late-night spot until 11:00 PM."
     },
@@ -673,16 +701,16 @@ export const restaurantData: RestaurantConfig = {
       id: "gal-7",
       title: "Steamed Handmade Momos",
       category: "Food",
-      image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=85",
       alt: "Steamed vegetable dumplings in basket with red chutney",
       caption: "Steaming hot vegetable momos paired with our spicy house garlic dip."
     },
     {
       id: "gal-8",
-      title: "Chilled Shakes & Brewed Beverages",
+      title: "Modern Frosted Cold Coffee",
       category: "Food",
-      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1200&q=80",
-      alt: "Thick cold coffee with ice cream topping",
+      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1200&q=85",
+      alt: "Frosted glass cold coffee with vanilla ice cream and cocoa dust",
       caption: "Refreshing thick cold coffee and herbal teas served daily from 9:00 AM."
     }
   ]

@@ -27,10 +27,11 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
     {
       id: 'welcome',
       sender: 'bot',
-      text: "Namaste! 🙏 Welcome to Mannat Cafe & Restaurant Dausa. I am your Digital Menu Assistant. Ask me anything or tap a suggestion below!",
+      text: "Namaste! 🙏 Welcome to Mannat Cafe & Restaurant Dausa. I am your Digital Menu Assistant. All dish prices are now live! Ask me anything or tap a recommendation below:",
       recommendations: [
+        restaurantData.menu.find((m) => m.id === 'snack-samosa')!, // Samosa
         restaurantData.menu.find((m) => m.id === 'snack-1')!, // Vegetable Puffs
-        restaurantData.menu.find((m) => m.id === 'sw-1')!, // Sandwich
+        restaurantData.menu.find((m) => m.id === 'bev-1')!, // Cold Coffee
       ].filter(Boolean),
     },
   ]);
@@ -38,12 +39,12 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const quickChips = [
-    "Crispy Vegetable Puffs",
+    "Hot Desi Samosa (₹30)",
+    "Crispy Veg Puffs (₹35)",
+    "Frosted Cold Coffee (₹90)",
+    "Special Samosa Chaat (₹60)",
+    "Dal Baati Churma (₹220)",
     "Best snacks for 2 people",
-    "Spicy Momos & Chinese",
-    "Cold Coffee & Beverages",
-    "Traditional Rajasthani",
-    "Pure Veg under ₹300",
   ];
 
   useEffect(() => {
@@ -76,33 +77,37 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
     let reply = "";
     let matches: MenuItem[] = [];
 
-    if (q.includes("puff") || q.includes("snack") || q.includes("special")) {
-      reply = "Our signature baked Vegetable Puffs are freshly prepared every day with crisp golden layers! Here are our top snacks:";
-      matches = restaurantData.menu.filter((m) => m.category === "Snacks" || m.id === "snack-1");
+    if (q.includes("samosa") || q.includes("chaat")) {
+      reply = "Our Hot Crispy Desi Samosas (₹30 for 2 Pcs) and Special Dausa Samosa Chaat (₹60) are piping hot customer favourites! Here are our top street specials:";
+      matches = [
+        restaurantData.menu.find((m) => m.id === "snack-samosa")!,
+        restaurantData.menu.find((m) => m.id === "st-samosa-chaat")!,
+        restaurantData.menu.find((m) => m.id === "st-1")!,
+      ].filter(Boolean);
+    } else if (q.includes("puff") || q.includes("snack") || q.includes("special")) {
+      reply = "Here are our signature freshly baked Vegetable Puffs (₹35) and crunchy snacks:";
+      matches = restaurantData.menu.filter((m) => m.category === "Samosa & Puffs");
+    } else if (q.includes("coffee") || q.includes("cold coffee") || q.includes("shake") || q.includes("drink") || q.includes("beverage")) {
+      reply = "Check out our modern frosted Cold Coffee with Ice Cream (₹90) and thick artisan shakes:";
+      matches = restaurantData.menu.filter((m) => m.category === "Beverages & Shakes");
     } else if (q.includes("momo") || q.includes("chinese") || q.includes("noodle") || q.includes("spicy")) {
       reply = "Here are our fiery Chinese & Momo specialties with authentic red garlic dip and wok tossed flavours:";
       matches = restaurantData.menu.filter((m) => m.category === "Momos" || m.category === "Chinese");
     } else if (q.includes("sandwich") || q.includes("burger") || q.includes("cheese") || q.includes("pasta")) {
-      reply = "Craving comfort food? Check out our loaded grilled cheese sandwiches, burgers, and creamy pastas:";
-      matches = restaurantData.menu.filter((m) => m.category === "Sandwiches" || m.category === "Pasta" || m.category === "Fast Food");
-    } else if (q.includes("coffee") || q.includes("tea") || q.includes("chai") || q.includes("drink") || q.includes("beverage")) {
-      reply = "Here are our refreshing hot & cold beverages, including our thick Cold Coffee and Kulhad Masala Chai:";
-      matches = restaurantData.menu.filter((m) => m.category === "Beverages");
+      reply = "Craving comfort food? Check out our loaded grilled cheese sandwiches (₹120), burgers (₹75), and creamy pastas (₹140):";
+      matches = restaurantData.menu.filter((m) => m.category === "Sandwiches" || m.category === "Pasta" || m.category === "Fast Food & Burgers");
     } else if (q.includes("rajasthani") || q.includes("baati") || q.includes("dal") || q.includes("north indian") || q.includes("roti") || q.includes("meal")) {
-      reply = "For authentic regional tastes, we recommend our traditional Dal Baati Churma and rich North Indian platters:";
+      reply = "For authentic regional tastes, we recommend our traditional Dal Baati Churma (₹220) and rich North Indian platters:";
       matches = restaurantData.menu.filter((m) => m.category === "Rajasthani" || m.category === "North Indian");
     } else if (q.includes("2") || q.includes("two") || q.includes("couple") || q.includes("friends")) {
-      reply = "For 2 people, a perfect combo is our Crispy Vegetable Puffs + Grilled Cheese Club Sandwich + 2 Kulhad Chais or Cold Coffees!";
+      reply = "For 2 people, a great combo is Hot Desi Samosas (₹30) + Grilled Club Sandwich (₹120) + 2 Frosted Cold Coffees (₹180) = Total ₹330!";
       matches = [
-        restaurantData.menu.find((m) => m.id === "snack-1")!,
+        restaurantData.menu.find((m) => m.id === "snack-samosa")!,
         restaurantData.menu.find((m) => m.id === "sw-1")!,
         restaurantData.menu.find((m) => m.id === "bev-1")!,
       ].filter(Boolean);
-    } else if (q.includes("price") || q.includes("300") || q.includes("budget") || q.includes("cheap")) {
-      reply = "Our average cost per person is ₹200–₹400, offering generous portions and great taste! Here are top value picks:";
-      matches = restaurantData.menu.filter((m) => m.isFeatured).slice(0, 3);
     } else {
-      reply = `Great choice! Here are delicious customer favourites freshly prepared in our Dausa kitchen:`;
+      reply = `Great choice! Here are top customer favourites with exact live prices from our Dausa kitchen:`;
       matches = restaurantData.menu.filter((m) => m.isFeatured).slice(0, 3);
     }
 
@@ -151,7 +156,7 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
                 </h3>
                 <span className="text-[10px] text-emerald-400 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-                  Live Waiter Assistant
+                  Live Prices Active
                 </span>
               </div>
             </div>
@@ -216,8 +221,8 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
                             <div className="text-xs font-semibold text-[#fdfbf7] truncate">
                               {item.name}
                             </div>
-                            <div className="text-[10px] text-[#d48b38]">
-                              {item.price ? `₹${item.price}` : item.priceDisplay || '₹ Price at cafe'}
+                            <div className="text-[11px] font-bold text-[#f2ae58]">
+                              {item.priceDisplay}
                             </div>
                           </div>
                         </div>
@@ -260,7 +265,7 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
-              placeholder="Ask for puffs, pasta, cold coffee..."
+              placeholder="Ask for samosa, puffs, cold coffee..."
               className="flex-1 bg-[#0d0f12] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-[#fdfbf7] placeholder-[#7d776c] focus:outline-none focus:border-[#d48b38]"
             />
             <button

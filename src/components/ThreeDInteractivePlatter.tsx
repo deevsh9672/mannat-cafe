@@ -12,6 +12,7 @@ interface PlatterDishOption {
   hasSteam: boolean;
   ingredientTags: string[];
   priceDisplay: string;
+  priceNum: number;
   spiceTag: string;
 }
 
@@ -22,25 +23,51 @@ interface ThreeDInteractivePlatterProps {
 export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> = ({ onAddToCart }) => {
   const platterOptions: PlatterDishOption[] = [
     {
+      id: "snack-samosa",
+      label: "Desi Samosa",
+      dishName: "Hot Crispy Desi Samosa (2 Pcs)",
+      category: "Dausa Bestseller",
+      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85",
+      hasSteam: true,
+      ingredientTags: ["🥔 Spiced Aloo", "🌿 Mint & Saunth", "🥟 Golden Crust"],
+      priceDisplay: "₹30",
+      priceNum: 30,
+      spiceTag: "Piping Hot Desi",
+    },
+    {
       id: "snack-1",
       label: "Crispy Puff",
       dishName: "Crispy Vegetable Puffs",
       category: "Signature Snack",
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=800&q=85",
       hasSteam: true,
-      ingredientTags: ["🥔 Spiced Aloo", "🌿 Green Coriander", "🥐 Flaky Layers"],
-      priceDisplay: "₹ Price at cafe",
-      spiceTag: "Medium Desi",
+      ingredientTags: ["🥔 Spiced Aloo", "🌿 Green Peas", "🥐 Flaky Layers"],
+      priceDisplay: "₹35",
+      priceNum: 35,
+      spiceTag: "Freshly Baked",
+    },
+    {
+      id: "bev-1",
+      label: "Cold Coffee",
+      dishName: "Modern Frosted Cold Coffee with Ice Cream",
+      category: "Modern Cafe Beverage",
+      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=85",
+      hasSteam: false,
+      ingredientTags: ["🍨 Vanilla Scoop", "🍫 Dark Cocoa Drizzle", "🥛 Cold Brew Espresso"],
+      priceDisplay: "₹90",
+      priceNum: 90,
+      spiceTag: "Frosted Sweet",
     },
     {
       id: "raj-1",
       label: "Dal Baati",
       dishName: "Traditional Dal Baati Churma",
       category: "Rajasthani Special",
-      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=85",
       hasSteam: true,
       ingredientTags: ["🧈 Pure Desi Ghee", "🥣 Panchmel Dal", "🍯 Sweet Churma"],
-      priceDisplay: "₹ Price at cafe",
+      priceDisplay: "₹220",
+      priceNum: 220,
       spiceTag: "Authentic Taste",
     },
     {
@@ -48,33 +75,24 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
       label: "Club Sandwich",
       dishName: "Grilled Veg & Cheese Club",
       category: "Gourmet Fast Food",
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=85",
       hasSteam: false,
       ingredientTags: ["🧀 Mozzarella Pull", "🫑 Crisp Peppers", "🍞 Butter Toasted"],
-      priceDisplay: "₹ Price at cafe",
+      priceDisplay: "₹120",
+      priceNum: 120,
       spiceTag: "Mild Italian",
     },
     {
       id: "bev-2",
       label: "Kulhad Chai",
       dishName: "Steaming Kulhad Masala Chai",
-      category: "Hot Brew",
-      image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=80",
+      category: "Clay Kulhad Brew",
+      image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=85",
       hasSteam: true,
-      ingredientTags: ["🫖 Clay Kulhad", "🌿 Ginger & Cardamom", "☕ Rich Tea"],
-      priceDisplay: "₹ Price at cafe",
-      spiceTag: "Slow Brewed",
-    },
-    {
-      id: "bev-1",
-      label: "Cold Coffee",
-      dishName: "Rich Cold Coffee with Ice Cream",
-      category: "Chilled Beverage",
-      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80",
-      hasSteam: false,
-      ingredientTags: ["🍨 Vanilla Scoop", "🍫 Dark Drizzle", "🥛 Thick Espresso"],
-      priceDisplay: "₹ Price at cafe",
-      spiceTag: "Chilled Sweet",
+      ingredientTags: ["🫖 Clay Kulhad", "🌿 Ginger & Cardamom", "☕ Rich Desi Chai"],
+      priceDisplay: "₹25",
+      priceNum: 25,
+      spiceTag: "Slow Simmered",
     }
   ];
 
@@ -129,7 +147,7 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
         {/* Outer Golden 3D Ambient Ring */}
         <div
           style={{ transform: 'translateZ(-40px)' }}
-          className="absolute inset-0 rounded-full border border-[#d48b38]/30 shadow-[0_0_60px_rgba(212,139,56,0.25)] pointer-events-none"
+          className="absolute inset-0 rounded-full border border-[#d48b38]/40 shadow-[0_0_60px_rgba(212,139,56,0.3)] pointer-events-none"
         />
 
         {/* 3D Circular Pedestal Platter */}
@@ -164,16 +182,14 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
             <ThreeDSteamCanvas className="opacity-80" intensity={1.8} />
           )}
 
-          {/* Center Floating Hot Badge */}
-          {currentDish.hasSteam && (
-            <div
-              style={{ transform: 'translateZ(25px)' }}
-              className="absolute top-4 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-amber-500/40 text-[10px] font-bold text-amber-300 flex items-center gap-1 shadow-lg"
-            >
-              <Flame className="w-3 h-3 text-amber-400 animate-pulse" />
-              <span>Served Steaming Hot</span>
-            </div>
-          )}
+          {/* Center Floating Hot Badge or Price Pill */}
+          <div
+            style={{ transform: 'translateZ(25px)' }}
+            className="absolute top-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/50 text-xs font-black text-amber-300 flex items-center gap-1.5 shadow-xl"
+          >
+            {currentDish.hasSteam && <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
+            <span>{currentDish.priceDisplay}</span>
+          </div>
         </div>
 
         {/* Floating 3D Ingredient Tag 1 (Top Left) */}
@@ -226,6 +242,13 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
           {currentDish.dishName}
         </h3>
 
+        {/* Price Tag Display */}
+        <div className="mt-1 flex items-center justify-center gap-2">
+          <span className="text-base sm:text-lg font-black text-[#f2ae58] bg-[#16191e] px-3.5 py-0.5 rounded-full border border-[#d48b38]/40 shadow-inner">
+            {currentDish.priceDisplay}
+          </span>
+        </div>
+
         {/* Instant Add to Order button */}
         <div className="mt-3 flex items-center justify-center gap-3">
           <button
@@ -233,7 +256,7 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
             className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all shadow-lg transform active:scale-95 ${
               isAdded
                 ? 'bg-emerald-500 text-white'
-                : 'bg-[#d48b38] hover:bg-[#e29d4c] text-[#0d0f12] shadow-[#d48b38]/25'
+                : 'bg-gradient-to-r from-[#d48b38] to-[#e29d4c] hover:from-[#e29d4c] hover:to-[#f2ae58] text-[#0d0f12] shadow-[#d48b38]/30 hover:shadow-[#d48b38]/50'
             }`}
           >
             {isAdded ? (
@@ -244,7 +267,7 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
             ) : (
               <>
                 <Plus className="w-4 h-4" />
-                <span>Add {currentDish.label} to Order</span>
+                <span>Order {currentDish.label} • {currentDish.priceDisplay}</span>
               </>
             )}
           </button>
@@ -258,7 +281,7 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
               onClick={() => setSelectedIdx(i)}
               className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
                 i === selectedIdx
-                  ? 'bg-white/15 text-[#fdfbf7] border border-[#d48b38] shadow-md'
+                  ? 'bg-white/20 text-[#fdfbf7] border border-[#d48b38] shadow-md scale-105'
                   : 'bg-white/5 text-[#8f897d] hover:text-[#ede8df] border border-transparent'
               }`}
             >
