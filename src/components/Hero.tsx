@@ -85,20 +85,20 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
 
             {/* Supporting Text */}
             <p className="max-w-xl text-sm sm:text-base text-[#ccc4b6] leading-relaxed">
-              {restaurantData.shortDescription} Taste our piping hot crispy <strong>Desi Samosas (₹30)</strong>, freshly baked <strong>Vegetable Puffs (₹35)</strong>, modern frosted <strong>Cold Coffee (₹90)</strong>, and authentic Rajasthani specialties under the open sky on Sainthal Road.
+              {restaurantData.shortDescription} Taste our signature barista-crafted <strong>Frosted Cold Coffee with Ice Cream (₹90)</strong>, piping hot <strong>Desi Samosas (₹30)</strong>, freshly baked <strong>Vegetable Puffs (₹35)</strong>, and authentic Rajasthani specialties under the open sky on Sainthal Road.
             </p>
 
             {/* Quick Feature Badges with exact prices */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-[11px] font-semibold text-[#ede8df]">
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5 text-amber-300">
+              <span className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-amber-600/10 border border-amber-500/40 flex items-center gap-1.5 text-amber-300 shadow-sm">
+                🧋 Barista Cold Coffee (₹90)
+              </span>
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
                 🥟 Hot Desi Samosa (₹30)
               </span>
               <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
                 <Coffee className="w-3 h-3 text-[#d48b38]" />
                 Veg Puffs (₹35)
-              </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sky-300">
-                🧋 Frosted Cold Coffee (₹90)
               </span>
               <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
                 🌿 Outdoor Rooftop

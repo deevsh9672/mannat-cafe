@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
-import { Plus, Check, RotateCw, Flame } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Plus, Check, RotateCw, Flame, Sparkles } from 'lucide-react';
 import { restaurantData, type MenuItem } from '../data/restaurantData';
 import { ThreeDSteamCanvas } from './ThreeDSteamCanvas';
+import { ThreeDCoffeeCraftCanvas } from './ThreeDCoffeeCraftCanvas';
 
 interface PlatterDishOption {
   id: string;
@@ -10,6 +11,7 @@ interface PlatterDishOption {
   category: string;
   image: string;
   hasSteam: boolean;
+  isCoffeeCrafting?: boolean;
   ingredientTags: string[];
   priceDisplay: string;
   priceNum: number;
@@ -22,6 +24,19 @@ interface ThreeDInteractivePlatterProps {
 
 export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> = ({ onAddToCart }) => {
   const platterOptions: PlatterDishOption[] = [
+    {
+      id: "bev-1",
+      label: "Cold Coffee",
+      dishName: "Handcrafted Frosted Cold Coffee with Ice Cream",
+      category: "Signature Barista Brew",
+      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=85",
+      hasSteam: false,
+      isCoffeeCrafting: true,
+      ingredientTags: ["🧊 Ice & Espresso Stream", "🥛 Chilled Milk Swirl", "🍨 Vanilla & Cocoa"],
+      priceDisplay: "₹90",
+      priceNum: 90,
+      spiceTag: "Live Barista Crafted",
+    },
     {
       id: "snack-samosa",
       label: "Desi Samosa",
@@ -45,18 +60,6 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
       priceDisplay: "₹35",
       priceNum: 35,
       spiceTag: "Freshly Baked",
-    },
-    {
-      id: "bev-1",
-      label: "Cold Coffee",
-      dishName: "Modern Frosted Cold Coffee with Ice Cream",
-      category: "Modern Cafe Beverage",
-      image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=85",
-      hasSteam: false,
-      ingredientTags: ["🍨 Vanilla Scoop", "🍫 Dark Cocoa Drizzle", "🥛 Cold Brew Espresso"],
-      priceDisplay: "₹90",
-      priceNum: 90,
-      spiceTag: "Frosted Sweet",
     },
     {
       id: "raj-1",
@@ -99,7 +102,22 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [rotation, setRotation] = useState({ rotX: 12, rotY: -15 });
   const [isAdded, setIsAdded] = useState(false);
+  const [craftStepIdx, setCraftStepIdx] = useState(1);
   const stageRef = useRef<HTMLDivElement>(null);
+
+  const baristaSteps = [
+    "🧊 1. Crystal Ice & Frost Chilling",
+    "☕ 2. Pouring Bold Espresso Stream",
+    "🥛 3. Swirling Velvety Chilled Milk",
+    "🍨 4. Creamy Scoop & Cocoa Drizzle"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCraftStepIdx((prev) => (prev + 1) % baristaSteps.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [baristaSteps.length]);
 
   const currentDish = platterOptions[selectedIdx];
 
@@ -182,13 +200,30 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
             <ThreeDSteamCanvas className="opacity-80" intensity={1.8} />
           )}
 
+          {/* Real 3D Coffee Pouring & Crafting Simulation */}
+          {currentDish.isCoffeeCrafting && (
+            <ThreeDCoffeeCraftCanvas isActive={true} />
+          )}
+
           {/* Center Floating Hot Badge or Price Pill */}
           <div
             style={{ transform: 'translateZ(25px)' }}
-            className="absolute top-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/50 text-xs font-black text-amber-300 flex items-center gap-1.5 shadow-xl"
+            className="absolute top-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/50 text-xs font-black text-amber-300 flex items-center gap-1.5 shadow-xl whitespace-nowrap"
           >
-            {currentDish.hasSteam && <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
-            <span>{currentDish.priceDisplay}</span>
+            {currentDish.isCoffeeCrafting ? (
+              <span className="flex items-center gap-1.5 text-amber-300">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+                </span>
+                <span>Crafting Live • {currentDish.priceDisplay}</span>
+              </span>
+            ) : (
+              <>
+                {currentDish.hasSteam && <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
+                <span>{currentDish.priceDisplay}</span>
+              </>
+            )}
           </div>
         </div>
 
@@ -228,6 +263,12 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
 
       {/* Dish Name & Quick Order Bar */}
       <div className="mt-5 text-center z-10 w-full px-4">
+        {currentDish.isCoffeeCrafting && (
+          <div className="mb-2 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-950/80 via-black/80 to-amber-950/80 border border-amber-500/40 text-[11px] font-semibold text-amber-200 backdrop-blur-md shadow-lg">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+            <span>Barista Live: {baristaSteps[craftStepIdx]}</span>
+          </div>
+        )}
         <div className="flex items-center justify-center gap-2 mb-1">
           <span className="text-[11px] font-bold text-[#d48b38] uppercase tracking-wider">
             {currentDish.category}
