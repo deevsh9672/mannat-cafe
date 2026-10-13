@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, MapPin, Phone, Clock, ArrowRight, Utensils, Sparkles, Coffee } from 'lucide-react';
+import { ChevronDown, MapPin, Phone, ArrowRight, Utensils } from 'lucide-react';
 import { restaurantData, getRestaurantStatus, type MenuItem } from '../data/restaurantData';
 import { ThreeDHeroCanvas } from './ThreeDHeroCanvas';
 import { ThreeDInteractivePlatter } from './ThreeDInteractivePlatter';
@@ -40,11 +40,11 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
           
-          {/* Left Column: Brand Story & CTAs */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-5 sm:space-y-6">
+          {/* Left Column: Clean & Premium Brand Intro */}
+          <div className="lg:col-span-7 text-center lg:text-left space-y-4 sm:space-y-6">
             
-            {/* Dynamic Status & Hours Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/10 backdrop-blur-md shadow-xl max-w-full">
+            {/* Clean Status & Location Pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-md text-[11px] font-medium text-[#d3cbbe]">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span
                   className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
@@ -57,84 +57,70 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
                   }`}
                 />
               </span>
-              <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${status.isOpen ? 'text-emerald-300' : 'text-rose-300'}`}>
-                {status.statusText}
+              <span className={status.isOpen ? 'text-emerald-300 font-semibold' : 'text-rose-300 font-semibold'}>
+                {status.isOpen ? 'Open Now' : 'Closed'}
               </span>
-              <span className="text-white/30 text-xs">•</span>
-              <span className="text-[11px] sm:text-xs text-[#d3cbbe] font-medium flex items-center gap-1">
-                <Clock className="w-3 h-3 text-[#d48b38]" />
-                <span>Open Daily 9 AM – 11 PM</span>
-              </span>
+              <span className="text-white/20">•</span>
+              <span>Daily 9 AM – 11 PM</span>
+              <span className="text-white/20 hidden xs:inline">•</span>
+              <span className="hidden xs:inline">Sainthal Rd, Dausa</span>
             </div>
 
-            {/* Brand Title */}
+            {/* Main Luxury Title */}
             <div>
-              <div className="inline-flex items-center gap-2 text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.35em] text-[#d48b38] uppercase font-bold">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Vinayak Nagar, Dausa</span>
-              </div>
-              <h1 className="font-brand text-2xl sm:text-5xl md:text-6xl font-bold tracking-wider text-[#fdfbf7] mt-1.5 sm:mt-2 mb-2 sm:mb-3 drop-shadow-md">
-                MANNAT CAFE &amp; RESTAURANT
+              <h1 className="font-brand text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold tracking-wider text-[#fdfbf7] leading-tight drop-shadow-md">
+                MANNAT <span className="bg-gradient-to-r from-[#f2ae58] via-[#e29d4c] to-[#d48b38] bg-clip-text text-transparent">CAFE</span>
               </h1>
+              <p className="font-serif-title text-base sm:text-2xl text-[#d48b38] italic font-normal tracking-wide mt-1 sm:mt-1.5">
+                &ldquo;Authentic Flavours, Modern Ambiance&rdquo;
+              </p>
             </div>
 
-            {/* Tagline */}
-            <p className="font-serif-title text-xl sm:text-3xl text-[#e29d4c] italic font-normal tracking-wide">
-              &ldquo;{restaurantData.tagline}&rdquo;
+            {/* Minimalist Subtext - Short, elegant & clean */}
+            <p className="max-w-lg text-xs sm:text-base text-[#ccc4b6] leading-relaxed font-light mx-auto lg:mx-0">
+              Handcrafted frosted cold coffees, crispy savoury snacks, and traditional regional dining under the open Dausa sky.
             </p>
 
-            {/* Supporting Text */}
-            <p className="max-w-xl text-sm sm:text-base text-[#ccc4b6] leading-relaxed">
-              {restaurantData.shortDescription} Taste our signature barista-crafted <strong>Frosted Cold Coffee with Ice Cream (₹90)</strong>, piping hot <strong>Desi Samosas (₹30)</strong>, freshly baked <strong>Vegetable Puffs (₹35)</strong>, and authentic Rajasthani specialties under the open sky on Sainthal Road.
-            </p>
-
-            {/* Quick Feature Badges with exact prices */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1 text-[11px] font-semibold text-[#ede8df]">
-              <span className="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-amber-600/10 border border-amber-500/40 flex items-center gap-1.5 text-amber-300 shadow-sm">
-                🧋 Barista Cold Coffee (₹90)
+            {/* 3 Clean Signature Badges */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-0.5 text-xs font-semibold text-[#ede8df]">
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-amber-500/35 text-amber-300 flex items-center gap-1.5 shadow-sm">
+                🧋 Cold Coffee (₹90)
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
-                🥟 Hot Desi Samosa (₹30)
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#d3cbbe] flex items-center gap-1.5">
+                🥟 Hot Samosa (₹30)
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <Coffee className="w-3 h-3 text-[#d48b38]" />
-                Veg Puffs (₹35)
-              </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                🌿 Outdoor Rooftop
-              </span>
-              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                🚗 Drive-thru / Curbside
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#d3cbbe] flex items-center gap-1.5">
+                🌿 Rooftop Seating
               </span>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+            {/* Focused Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
               <a
                 href="#menu"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] shadow-lg shadow-[#d48b38]/25 hover:shadow-[#d48b38]/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide text-[#0d0f12] bg-gradient-to-r from-[#f2ae58] via-[#d48b38] to-[#b36919] hover:from-[#f7be73] hover:to-[#c87820] shadow-lg shadow-[#d48b38]/25 hover:shadow-[#d48b38]/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Utensils className="w-4 h-4" />
-                <span>Explore Full Menu with Prices</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
+                <span>Explore Menu</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
               </a>
 
               <a
                 href={restaurantData.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide text-[#ede8df] bg-white/10 hover:bg-white/15 border border-white/15 backdrop-blur-sm transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold tracking-wide text-[#ede8df] bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-sm transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 <MapPin className="w-4 h-4 text-[#d48b38]" />
-                <span>Get Directions</span>
+                <span>Directions</span>
               </a>
 
               <a
                 href={`tel:${restaurantData.phoneRaw}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-xs sm:text-sm font-medium text-[#ccc4b6] hover:text-[#fdfbf7] hover:bg-white/5 transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-3 rounded-full text-xs font-medium text-[#ccc4b6] hover:text-[#fdfbf7] hover:bg-white/5 transition-colors"
               >
-                <Phone className="w-4 h-4 text-[#d48b38]" />
-                <span>Call: {restaurantData.phone}</span>
+                <Phone className="w-3.5 h-3.5 text-[#d48b38]" />
+                <span>Call Us</span>
               </a>
             </div>
 

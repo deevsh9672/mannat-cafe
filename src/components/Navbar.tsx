@@ -66,39 +66,39 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
             <div className="flex items-center justify-between gap-2">
               
               {/* 3D Embossed Brand Logo */}
-              <a href="#home" className="group flex items-center gap-2 sm:gap-3 shrink-0">
+              <a href="#home" className="group flex items-center gap-2 sm:gap-2.5 shrink-0">
                 {/* 3D Golden Crest Badge */}
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#d48b38] via-[#b87326] to-[#80460c] p-[1.5px] shadow-[0_4px_15px_rgba(212,139,56,0.35)] group-hover:scale-105 transition-transform duration-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#d48b38] via-[#b87326] to-[#80460c] p-[1.5px] shadow-[0_4px_15px_rgba(212,139,56,0.35)] group-hover:scale-105 transition-transform duration-300">
                   <div className="w-full h-full rounded-[10px] sm:rounded-[14px] bg-[#121418] flex items-center justify-center">
-                    <Coffee className="w-4 h-4 sm:w-5 sm:h-5 text-[#e29d4c] group-hover:rotate-12 transition-transform duration-300" />
+                    <Coffee className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#e29d4c] group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                 </div>
 
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1 sm:gap-1.5">
                     <span
-                      className="font-brand text-base sm:text-2xl font-black tracking-widest text-[#fdfbf7] group-hover:text-[#e29d4c] transition-colors"
+                      className="font-brand text-base sm:text-xl font-black tracking-wider text-[#fdfbf7] group-hover:text-[#e29d4c] transition-colors"
                       style={{
                         textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(212,139,56,0.25)',
                       }}
                     >
                       MANNAT
                     </span>
-                    <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#d48b38] shadow-[0_0_8px_#d48b38]" />
+                    <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#d48b38]" />
                   </div>
-                  <span className="text-[9px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.25em] text-[#a59f93] uppercase font-bold truncate">
-                    Cafe &amp; Restaurant
+                  <span className="text-[9px] tracking-[0.2em] text-[#d48b38] uppercase font-bold">
+                    Cafe • Dausa
                   </span>
                 </div>
               </a>
 
-              {/* Desktop 3D Navigation Links */}
+              {/* Desktop 3D Navigation Links - Clean & Minimal */}
               <nav className="hidden lg:flex items-center space-x-1 bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full shadow-inner">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#d3cbbe] hover:text-[#fdfbf7] hover:bg-white/10 transition-all duration-200 tracking-wide hover:shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+                    className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#d3cbbe] hover:text-[#fdfbf7] hover:bg-white/10 transition-all duration-200 tracking-wide"
                   >
                     {link.name}
                   </a>
@@ -123,7 +123,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                     />
                   </span>
                   <span className={`text-[11px] font-bold ${status.isOpen ? 'text-emerald-300' : 'text-rose-300'}`}>
-                    {status.isOpen ? 'Open Now' : 'Closed'}
+                    {status.isOpen ? 'Open' : 'Closed'}
                   </span>
                 </div>
 
@@ -134,21 +134,20 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                   title="Call Restaurant"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#d48b38]" />
-                  <span className="text-[11px] font-bold">+91 99296 60850</span>
+                  <span className="text-[11px] font-bold">Call</span>
                 </a>
 
                 {/* 3D Tactile "Order Online" Button */}
                 <button
                   onClick={onOpenCart}
-                  className="relative inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold tracking-wide text-[#0d0f12] bg-gradient-to-b from-[#f2ae58] via-[#d48b38] to-[#b36919] shadow-[0_4px_0_#753f09,0_8px_15px_rgba(212,139,56,0.35)] active:translate-y-1 active:shadow-[0_1px_0_#753f09] transition-all transform hover:-translate-y-0.5"
+                  className="relative inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold tracking-wide text-[#0d0f12] bg-gradient-to-b from-[#f2ae58] via-[#d48b38] to-[#b36919] shadow-[0_4px_0_#753f09,0_8px_15px_rgba(212,139,56,0.35)] active:translate-y-1 active:shadow-[0_1px_0_#753f09] transition-all transform hover:-translate-y-0.5"
                   style={{
                     textShadow: '0 1px 0 rgba(255,255,255,0.4)',
                   }}
                   aria-label="View Cart and Order Online"
                 >
                   <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0d0f12]" />
-                  <span className="hidden sm:inline">Order Online</span>
-                  <span className="sm:hidden text-[11px]">Cart</span>
+                  <span>Order</span>
                   {cartCount > 0 && (
                     <span className="bg-[#0d0f12] text-[#f2ae58] font-black text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full shadow-inner animate-pulse">
                       {cartCount}
