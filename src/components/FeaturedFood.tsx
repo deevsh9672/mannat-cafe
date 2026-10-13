@@ -30,10 +30,10 @@ export const FeaturedFood: React.FC<FeaturedFoodProps> = ({ onAddToCart }) => {
           </p>
         </div>
 
-        {/* Featured Items Grid with Multi-Layer 3D Depth */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Featured Items Grid with Multi-Layer 3D Depth (2 Dishes Per Row on Mobile) */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
           {featuredItems.map((item) => (
-            <ThreeDCard key={item.id} maxTilt={12} scale={1.03}>
+            <ThreeDCard key={item.id} maxTilt={10} scale={1.02}>
               <div
                 style={{ transformStyle: 'preserve-3d' }}
                 className="group glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-[#d48b38]/50 transition-all duration-300 flex flex-col justify-between h-full shadow-2xl"
@@ -41,10 +41,10 @@ export const FeaturedFood: React.FC<FeaturedFoodProps> = ({ onAddToCart }) => {
                 {/* Image Container with 3D Popout on Hover */}
                 <div
                   style={{
-                    transform: 'translateZ(25px)',
+                    transform: 'translateZ(20px)',
                     transformStyle: 'preserve-3d',
                   }}
-                  className="relative h-56 sm:h-64 overflow-hidden bg-black/40 transition-transform duration-300 group-hover:translate-z-[40px]"
+                  className="relative h-32 xs:h-44 sm:h-64 overflow-hidden bg-black/40 transition-transform duration-300 group-hover:translate-z-[35px]"
                 >
                   <img
                     src={item.image}
@@ -62,25 +62,25 @@ export const FeaturedFood: React.FC<FeaturedFoodProps> = ({ onAddToCart }) => {
 
                   {/* Dietary Veg Tag & Special Badge floating forward */}
                   <div
-                    style={{ transform: 'translateZ(30px)' }}
-                    className="absolute top-3 left-3 flex items-center gap-2"
+                    style={{ transform: 'translateZ(25px)' }}
+                    className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-1 sm:gap-2"
                   >
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[11px] font-semibold text-emerald-400 shadow-md">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                      Pure Veg
+                    <span className="inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[9px] sm:text-[11px] font-semibold text-emerald-400 shadow-md">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Veg
                     </span>
 
                     {item.badge && (
-                      <span className="px-2.5 py-1 rounded-full bg-[#d48b38] text-[#0d0f12] text-[11px] font-bold tracking-wide uppercase shadow-lg flex items-center gap-1">
-                        <Sparkles className="w-2.5 h-2.5" />
+                      <span className="hidden xs:inline-flex px-2 py-0.5 rounded-full bg-[#d48b38] text-[#0d0f12] text-[9px] sm:text-[11px] font-bold tracking-wide uppercase shadow-lg items-center gap-1">
+                        <Sparkles className="w-2 h-2" />
                         {item.badge}
                       </span>
                     )}
                   </div>
 
                   <div
-                    style={{ transform: 'translateZ(25px)' }}
-                    className="absolute bottom-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md text-[#d48b38] border border-white/10 shadow-md"
+                    style={{ transform: 'translateZ(20px)' }}
+                    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-black/80 backdrop-blur-md text-[#d48b38] border border-white/10 shadow-md"
                   >
                     {item.category}
                   </div>
@@ -89,45 +89,32 @@ export const FeaturedFood: React.FC<FeaturedFoodProps> = ({ onAddToCart }) => {
                 {/* Card Body with Multi-Depth Layering */}
                 <div
                   style={{ transformStyle: 'preserve-3d' }}
-                  className="p-5 sm:p-6 flex-1 flex flex-col justify-between"
+                  className="p-3 sm:p-6 flex-1 flex flex-col justify-between"
                 >
-                  <div style={{ transform: 'translateZ(20px)' }}>
-                    <h3 className="font-serif-title text-xl font-bold text-[#fdfbf7] group-hover:text-[#e29d4c] transition-colors mb-2">
+                  <div style={{ transform: 'translateZ(15px)' }}>
+                    <h3 className="font-serif-title text-xs xs:text-sm sm:text-xl font-bold text-[#fdfbf7] group-hover:text-[#e29d4c] transition-colors mb-1 truncate">
                       {item.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#b0a99c] line-clamp-2 leading-relaxed mb-4">
+                    <p className="text-[10px] sm:text-sm text-[#b0a99c] line-clamp-1 sm:line-clamp-2 leading-relaxed mb-2 sm:mb-4">
                       {item.description}
                     </p>
-
-                    {item.ingredients && item.ingredients.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mb-4">
-                        {item.ingredients.slice(0, 3).map((ing) => (
-                          <span
-                            key={ing}
-                            className="text-[10px] bg-white/5 border border-white/5 px-2 py-0.5 rounded text-[#a59f93]"
-                          >
-                            {ing}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </div>
 
                   {/* Footer with Price and Order Now CTA floating forward */}
                   <div
-                    style={{ transform: 'translateZ(25px)' }}
-                    className="pt-4 border-t border-white/10 flex items-center justify-between"
+                    style={{ transform: 'translateZ(20px)' }}
+                    className="pt-2 sm:pt-4 border-t border-white/10 flex items-center justify-between gap-1"
                   >
-                    <div className="text-xs sm:text-sm font-semibold text-[#f5f0e8]">
-                      {item.price ? `₹${item.price}` : (item.priceDisplay || "₹ Price at cafe")}
+                    <div className="text-xs sm:text-sm font-extrabold text-[#f2ae58]">
+                      {item.priceDisplay || (item.price ? `₹${item.price}` : "₹ Price at cafe")}
                     </div>
 
                     <button
                       onClick={() => onAddToCart(item)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] shadow-md shadow-[#d48b38]/20 transition-all transform active:scale-95 group-hover:shadow-lg group-hover:shadow-[#d48b38]/30"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] shadow-md shadow-[#d48b38]/20 transition-all transform active:scale-95 group-hover:shadow-lg group-hover:shadow-[#d48b38]/30"
                     >
-                      <Plus className="w-3.5 h-3.5" />
-                      <span>Order Now</span>
+                      <Plus className="w-3 h-3" />
+                      <span>Add</span>
                     </button>
                   </div>
                 </div>

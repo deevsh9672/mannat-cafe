@@ -156,17 +156,17 @@ export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
             {filteredItems.map((item) => {
               const qty = cartMap.get(item.id) || 0;
 
               return (
                 <div
                   key={item.id}
-                  className="glass-card glass-card-hover rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group"
+                  className="glass-card glass-card-hover rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group bg-[#16191e]"
                 >
                   {/* Top: Image & Badge */}
-                  <div className="relative h-48 overflow-hidden bg-black/40">
+                  <div className="relative h-32 xs:h-40 sm:h-48 overflow-hidden bg-black/40">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -180,69 +180,69 @@ export const InteractiveMenu: React.FC<InteractiveMenuProps> = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-[#16191e] via-transparent to-transparent opacity-80" />
 
                     {/* Veg & Category Indicator */}
-                    <div className="absolute top-3 left-3 flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-emerald-400">
+                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-1.5">
+                      <span className="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[9px] sm:text-[10px] font-semibold text-emerald-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         Veg
                       </span>
 
                       {item.badge && (
-                        <span className="px-2 py-0.5 rounded-full bg-[#d48b38] text-[#0d0f12] text-[10px] font-bold tracking-wide uppercase">
+                        <span className="hidden xs:inline-block px-1.5 py-0.5 rounded-full bg-[#d48b38] text-[#0d0f12] text-[9px] sm:text-[10px] font-bold tracking-wide uppercase">
                           {item.badge}
                         </span>
                       )}
                     </div>
 
-                    <div className="absolute bottom-2.5 right-3 text-[11px] font-semibold text-[#a59f93] bg-black/70 px-2 py-0.5 rounded border border-white/5">
+                    <div className="absolute bottom-2 right-2 text-[9px] sm:text-[11px] font-semibold text-[#a59f93] bg-black/70 px-1.5 sm:px-2 py-0.5 rounded border border-white/5">
                       {item.category}
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                  <div className="p-2.5 xs:p-3 sm:p-5 flex-1 flex flex-col justify-between">
                     <div>
-                      <h4 className="font-serif-title text-lg font-bold text-[#fdfbf7] group-hover:text-[#d48b38] transition-colors mb-1.5">
+                      <h4 className="font-serif-title text-xs xs:text-sm sm:text-lg font-bold text-[#fdfbf7] group-hover:text-[#d48b38] transition-colors mb-1 truncate">
                         {item.name}
                       </h4>
-                      <p className="text-xs text-[#a59f93] line-clamp-2 leading-relaxed mb-4">
+                      <p className="text-[10px] sm:text-xs text-[#a59f93] line-clamp-1 sm:line-clamp-2 leading-relaxed mb-2 sm:mb-4">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Price and Add/Qty Controls */}
-                    <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+                    <div className="pt-2 sm:pt-3 border-t border-white/5 flex items-center justify-between gap-1">
                       <div>
-                        <span className="text-xs sm:text-sm font-semibold text-[#f5f0e8]">
-                          {item.price ? `₹${item.price}` : (item.priceDisplay || "₹ Price at cafe")}
+                        <span className="text-xs sm:text-sm font-extrabold text-[#f5f0e8]">
+                          {item.price ? `₹${item.price}` : (item.priceDisplay || "₹ Price")}
                         </span>
                       </div>
 
                       {qty === 0 ? (
                         <button
                           onClick={() => onAddToCart(item)}
-                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] shadow-sm transition-all transform active:scale-95"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] shadow-sm transition-all transform active:scale-95"
                         >
-                          <Plus className="w-3.5 h-3.5" />
+                          <Plus className="w-3 h-3" />
                           <span>Add</span>
                         </button>
                       ) : (
-                        <div className="inline-flex items-center gap-2 bg-[#1c2026] border border-[#d48b38]/40 rounded-full px-2 py-1">
+                        <div className="inline-flex items-center gap-1 bg-[#1c2026] border border-[#d48b38]/40 rounded-full px-1.5 py-0.5 sm:px-2 sm:py-1">
                           <button
                             onClick={() => onUpdateQuantity(item.id, -1)}
-                            className="p-1 text-[#fdfbf7] hover:text-[#d48b38] transition-colors"
+                            className="p-0.5 text-[#fdfbf7] hover:text-[#d48b38] transition-colors"
                             aria-label="Decrease quantity"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                           </button>
-                          <span className="text-xs font-bold text-[#d48b38] min-w-4 text-center">
+                          <span className="text-[10px] sm:text-xs font-bold text-[#d48b38] min-w-3 text-center">
                             {qty}
                           </span>
                           <button
                             onClick={() => onUpdateQuantity(item.id, 1)}
-                            className="p-1 text-[#fdfbf7] hover:text-[#d48b38] transition-colors"
+                            className="p-0.5 text-[#fdfbf7] hover:text-[#d48b38] transition-colors"
                             aria-label="Increase quantity"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                           </button>
                         </div>
                       )}
