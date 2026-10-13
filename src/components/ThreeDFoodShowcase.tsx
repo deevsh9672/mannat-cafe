@@ -9,6 +9,8 @@ interface ThreeDFoodShowcaseProps {
 export const ThreeDFoodShowcase: React.FC<ThreeDFoodShowcaseProps> = ({ onAddToCart }) => {
   const showcaseItems = restaurantData.menu.filter((item) => item.isFeatured);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % showcaseItems.length);
@@ -18,10 +20,31 @@ export const ThreeDFoodShowcase: React.FC<ThreeDFoodShowcaseProps> = ({ onAddToC
     setActiveIndex((prev) => (prev - 1 + showcaseItems.length) % showcaseItems.length);
   };
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+  };
+
   const currentItem = showcaseItems[activeIndex];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#0b0c0f] relative overflow-hidden">
+    <section className="py-16 sm:py-28 bg-[#0b0c0f] relative overflow-hidden">
       {/* 3D Dynamic Ambient Lights */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d48b38]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -29,25 +52,30 @@ export const ThreeDFoodShowcase: React.FC<ThreeDFoodShowcaseProps> = ({ onAddToC
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#d48b38]/10 border border-[#d48b38]/30 text-xs font-semibold tracking-widest text-[#d48b38] uppercase mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Interactive 3D Stage</span>
           </div>
-          <h2 className="font-serif-title text-3xl sm:text-5xl font-bold text-[#fdfbf7] tracking-tight mb-4">
+          <h2 className="font-serif-title text-2xl sm:text-5xl font-bold text-[#fdfbf7] tracking-tight mb-3 sm:mb-4">
             Signature Dish Showcase
           </h2>
-          <p className="text-sm sm:text-base text-[#b0a99c]">
-            Explore our culinary masterpieces in interactive 3D perspective. Click dishes or use controls to cycle through favourites.
+          <p className="text-xs sm:text-base text-[#b0a99c]">
+            Explore our culinary masterpieces in interactive 3D perspective. Swipe or click to inspect favourites.
           </p>
         </div>
 
         {/* 3D Carousel Stage */}
-        <div className="relative py-8 flex flex-col items-center">
+        <div
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          className="relative py-4 sm:py-8 flex flex-col items-center"
+        >
           
           {/* Spatial 3D Ring */}
           <div
-            className="w-full max-w-4xl h-80 sm:h-96 relative flex items-center justify-center"
+            className="w-full max-w-4xl h-76 sm:h-96 relative flex items-center justify-center overflow-visible"
             style={{ perspective: '1200px' }}
           >
             {showcaseItems.map((item, index) => {
@@ -62,9 +90,9 @@ export const ThreeDFoodShowcase: React.FC<ThreeDFoodShowcaseProps> = ({ onAddToC
 
               if (!isVisible) return null;
 
-              const rotateY = offset * 32; // degrees
-              const translateX = offset * 210; // px
-              const translateZ = -Math.abs(offset) * 160; // px depth
+              const rotateY = offset * 28; // degrees
+              const translateX = offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 110 : 210); // px
+              const translateZ = -Math.abs(offset) * (typeof window !== 'undefined' && window.innerWidth < 640 ? 110 : 160); // px depth
               const scale = isCenter ? 1.05 : 0.82;
               const opacity = isCenter ? 1 : 0.45;
               const zIndex = 20 - Math.abs(offset) * 5;
@@ -77,9 +105,9 @@ export const ThreeDFoodShowcase: React.FC<ThreeDFoodShowcaseProps> = ({ onAddToC
                     transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
                     opacity,
                     zIndex,
-                    transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                    transition: 'all 0.45s cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
-                  className={`absolute w-64 sm:w-80 h-72 sm:h-88 rounded-3xl overflow-hidden cursor-pointer shadow-2xl border ${
+                  className={`absolute w-60 sm:w-80 h-72 sm:h-88 rounded-3xl overflow-hidden cursor-pointer shadow-2xl border ${
                     isCenter
                       ? 'border-[#d48b38] shadow-[#d48b38]/30 shadow-2xl ring-2 ring-[#d48b38]/20'
                       : 'border-white/10 hover:border-white/30'

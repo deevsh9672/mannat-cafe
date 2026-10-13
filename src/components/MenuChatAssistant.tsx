@@ -14,14 +14,30 @@ interface MenuChatAssistantProps {
   onAddToCart: (item: MenuItem) => void;
   onOpenCart: () => void;
   cartCount: number;
+  isOpen?: boolean;
+  onToggleOpen?: () => void;
+  onClose?: () => void;
 }
 
 export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
   onAddToCart,
   onOpenCart,
   cartCount,
+  isOpen: controlledIsOpen,
+  onToggleOpen,
+  onClose: controlledOnClose,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+  const toggleOpen = onToggleOpen || (() => setInternalIsOpen(!internalIsOpen));
+  const closeAssistant = controlledOnClose || (() => {
+    if (controlledIsOpen !== undefined && onToggleOpen) {
+      onToggleOpen();
+    } else {
+      setInternalIsOpen(false);
+    }
+  });
+
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -121,10 +137,10 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
 
   return (
     <>
-      {/* Floating Menu Chat Launcher Button */}
-      <div className="fixed bottom-20 md:bottom-22 right-5 z-40">
+      {/* Floating Menu Chat Launcher Button (Desktop Only — on mobile it lives in the sleek bottom dock) */}
+      <div className="hidden md:block fixed bottom-20 md:bottom-22 right-5 z-40">
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleOpen}
           className="relative inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#16191e] border border-[#d48b38]/50 text-[#fdfbf7] shadow-2xl hover:border-[#d48b38] transition-all transform hover:scale-105 active:scale-95 group"
           aria-label="Open AI Menu Assistant"
         >
@@ -139,22 +155,30 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
         </button>
       </div>
 
+      {/* Mobile Backdrop Overlay */}
+      {isOpen && (
+        <div
+          onClick={closeAssistant}
+          className="sm:hidden fixed inset-0 z-45 bg-black/75 backdrop-blur-sm animate-fadeIn"
+        />
+      )}
+
       {/* Interactive Chat Window Modal */}
       {isOpen && (
-        <div className="fixed bottom-24 md:bottom-28 right-4 sm:right-6 w-[92vw] sm:w-[420px] max-h-[80vh] z-50 bg-[#121418] border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-fadeIn backdrop-blur-xl">
+        <div className="fixed inset-x-2 bottom-16 sm:inset-x-auto sm:right-6 sm:bottom-28 w-auto sm:w-[420px] max-h-[82vh] z-50 bg-[#121418] border border-amber-500/30 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-fadeIn backdrop-blur-2xl">
           
           {/* Header */}
-          <div className="p-4 bg-[#16191e] border-b border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-2xl bg-[#d48b38]/15 border border-[#d48b38]/30 flex items-center justify-center text-[#d48b38]">
-                <Bot className="w-5 h-5" />
+          <div className="p-3.5 sm:p-4 bg-[#16191e] border-b border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-[#d48b38]/15 border border-[#d48b38]/30 flex items-center justify-center text-[#d48b38]">
+                <Bot className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-[#fdfbf7] flex items-center gap-1.5">
+                <h3 className="text-xs sm:text-sm font-bold text-[#fdfbf7] flex items-center gap-1.5">
                   <span>Mannat Menu AI</span>
                   <Sparkles className="w-3 h-3 text-[#d48b38]" />
                 </h3>
-                <span className="text-[10px] text-emerald-400 flex items-center gap-1">
+                <span className="text-[9px] sm:text-[10px] text-emerald-400 flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
                   Live Prices Active
                 </span>
@@ -165,17 +189,17 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
               {cartCount > 0 && (
                 <button
                   onClick={() => {
-                    setIsOpen(false);
+                    closeAssistant();
                     onOpenCart();
                   }}
-                  className="p-2 rounded-xl bg-white/5 text-[#d48b38] hover:bg-white/10 text-xs font-semibold flex items-center gap-1"
+                  className="p-1.5 sm:p-2 rounded-xl bg-white/5 text-[#d48b38] hover:bg-white/10 text-xs font-semibold flex items-center gap-1"
                 >
                   <ShoppingBag className="w-3.5 h-3.5" />
                   <span>{cartCount}</span>
                 </button>
               )}
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={closeAssistant}
                 className="p-1.5 rounded-full text-[#a59f93] hover:text-[#fdfbf7] hover:bg-white/5 transition-colors"
                 aria-label="Close Assistant"
               >

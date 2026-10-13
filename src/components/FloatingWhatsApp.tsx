@@ -10,7 +10,7 @@ export const FloatingWhatsApp: React.FC = () => {
   );
 
   return (
-    <div className="fixed bottom-16 md:bottom-6 right-5 z-40 flex items-center gap-2 group">
+    <div className="hidden md:flex fixed bottom-6 right-5 z-40 items-center gap-2 group">
       {/* Tooltip */}
       <div
         className={`hidden md:block transition-all duration-300 py-1.5 px-3 rounded-xl bg-[#16191e] border border-white/10 text-xs font-semibold text-[#ede8df] shadow-xl ${

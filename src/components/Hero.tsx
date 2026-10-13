@@ -37,49 +37,49 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
       <ThreeDHeroCanvas />
 
       {/* Main Split 3D Hero Grid */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-16 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
           
           {/* Left Column: Brand Story & CTAs */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-6">
+          <div className="lg:col-span-7 text-center lg:text-left space-y-5 sm:space-y-6">
             
             {/* Dynamic Status & Hours Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-white/10 backdrop-blur-md shadow-xl">
-              <span className="relative flex h-2.5 w-2.5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 border border-white/10 backdrop-blur-md shadow-xl max-w-full">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span
                   className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
                     status.isOpen ? 'bg-emerald-400' : 'bg-rose-400'
                   }`}
                 />
                 <span
-                  className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
+                  className={`relative inline-flex rounded-full h-2 w-2 ${
                     status.isOpen ? 'bg-emerald-500' : 'bg-rose-500'
                   }`}
                 />
               </span>
-              <span className={`text-xs font-semibold tracking-wide ${status.isOpen ? 'text-emerald-300' : 'text-rose-300'}`}>
+              <span className={`text-[11px] sm:text-xs font-semibold tracking-wide ${status.isOpen ? 'text-emerald-300' : 'text-rose-300'}`}>
                 {status.statusText}
               </span>
               <span className="text-white/30 text-xs">•</span>
-              <span className="text-xs text-[#d3cbbe] font-medium flex items-center gap-1">
+              <span className="text-[11px] sm:text-xs text-[#d3cbbe] font-medium flex items-center gap-1">
                 <Clock className="w-3 h-3 text-[#d48b38]" />
-                <span>Open Daily • 9:00 AM – 11:00 PM</span>
+                <span>Open Daily 9 AM – 11 PM</span>
               </span>
             </div>
 
             {/* Brand Title */}
             <div>
-              <div className="inline-flex items-center gap-2 text-xs sm:text-sm tracking-[0.35em] text-[#d48b38] uppercase font-bold">
+              <div className="inline-flex items-center gap-2 text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.35em] text-[#d48b38] uppercase font-bold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Vinayak Nagar, Dausa</span>
               </div>
-              <h1 className="font-brand text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider text-[#fdfbf7] mt-2 mb-3 drop-shadow-md">
+              <h1 className="font-brand text-2xl sm:text-5xl md:text-6xl font-bold tracking-wider text-[#fdfbf7] mt-1.5 sm:mt-2 mb-2 sm:mb-3 drop-shadow-md">
                 MANNAT CAFE &amp; RESTAURANT
               </h1>
             </div>
 
             {/* Tagline */}
-            <p className="font-serif-title text-2xl sm:text-3xl text-[#e29d4c] italic font-normal tracking-wide">
+            <p className="font-serif-title text-xl sm:text-3xl text-[#e29d4c] italic font-normal tracking-wide">
               &ldquo;{restaurantData.tagline}&rdquo;
             </p>
 

@@ -25,6 +25,7 @@ import type { MenuItem } from './data/restaurantData';
 export function App() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
 
   const handleAddToCart = (item: MenuItem) => {
     setCart((prev) => {
@@ -134,10 +135,14 @@ export function App() {
         onClearCart={handleClearCart}
       />
 
-      {/* Mobile Sticky CTA Bar */}
-      <MobileStickyCTA onOpenMenu={() => setIsCartOpen(true)} />
+      {/* Mobile Sticky CTA Bar (Modern Mobile App Navigation Dock) */}
+      <MobileStickyCTA
+        cartCount={totalCartCount}
+        onOpenCart={() => setIsCartOpen(true)}
+        onOpenAssistant={() => setIsAssistantOpen(true)}
+      />
 
-      {/* Floating WhatsApp Widget */}
+      {/* Floating WhatsApp Widget (Desktop) */}
       <FloatingWhatsApp />
 
       {/* Interactive AI Menu Chat Assistant */}
@@ -145,6 +150,9 @@ export function App() {
         onAddToCart={handleAddToCart}
         onOpenCart={() => setIsCartOpen(true)}
         cartCount={totalCartCount}
+        isOpen={isAssistantOpen}
+        onToggleOpen={() => setIsAssistantOpen(!isAssistantOpen)}
+        onClose={() => setIsAssistantOpen(false)}
       />
     </div>
   );

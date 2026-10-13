@@ -136,6 +136,22 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
     setRotation({ rotX: 12, rotY: -12 });
   };
 
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!stageRef.current || e.touches.length === 0) return;
+    const touch = e.touches[0];
+    const rect = stageRef.current.getBoundingClientRect();
+    const x = (touch.clientX - rect.left) / rect.width - 0.5;
+    const y = (touch.clientY - rect.top) / rect.height - 0.5;
+    setRotation({
+      rotX: -y * 22 + 10,
+      rotY: x * 28,
+    });
+  };
+
+  const handleTouchEnd = () => {
+    setRotation({ rotX: 12, rotY: -12 });
+  };
+
   const handleOrder = () => {
     const menuItem = restaurantData.menu.find((m) => m.id === currentDish.id);
     if (menuItem) {
@@ -150,7 +166,9 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
       ref={stageRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-lg mx-auto py-6 sm:py-8 flex flex-col items-center select-none"
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      className="relative w-full max-w-lg mx-auto py-4 sm:py-8 flex flex-col items-center select-none touch-none sm:touch-auto"
       style={{ perspective: '1100px' }}
     >
       {/* Dynamic 3D Platter Container */}
@@ -160,7 +178,7 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
           transformStyle: 'preserve-3d',
           transition: 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
-        className="relative w-72 sm:w-92 h-72 sm:h-92 flex items-center justify-center will-change-transform"
+        className="relative w-64 sm:w-80 md:w-92 h-64 sm:h-80 md:h-92 flex items-center justify-center will-change-transform"
       >
         {/* Outer Golden 3D Ambient Ring */}
         <div
@@ -184,7 +202,7 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
             transform: 'translateZ(35px) scale(0.92)',
             transformStyle: 'preserve-3d',
           }}
-          className="relative w-56 sm:w-72 h-56 sm:h-72 rounded-full overflow-hidden shadow-[0_25px_50px_rgba(0,0,0,0.85)] border-2 border-white/20 group"
+          className="relative w-52 sm:w-64 md:w-72 h-52 sm:h-64 md:h-72 rounded-full overflow-hidden shadow-[0_25px_50px_rgba(0,0,0,0.85)] border-2 border-white/20 group"
         >
           <img
             src={currentDish.image}
@@ -259,6 +277,18 @@ export const ThreeDInteractivePlatter: React.FC<ThreeDInteractivePlatterProps> =
         >
           <span>{currentDish.ingredientTags[2]}</span>
         </div>
+      </div>
+
+      {/* Mobile Ingredient Pills Strip */}
+      <div className="flex sm:hidden items-center justify-center gap-1.5 flex-wrap mt-2 px-2">
+        {currentDish.ingredientTags.map((tag, idx) => (
+          <span
+            key={idx}
+            className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-medium text-[#ede8df]"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
 
       {/* Dish Name & Quick Order Bar */}

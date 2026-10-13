@@ -85,7 +85,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       />
 
       {/* Drawer Container */}
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
         <div className="w-screen max-w-md bg-[#121418] border-l border-white/10 shadow-2xl flex flex-col justify-between">
           
           {/* Header */}
@@ -297,7 +297,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
           {/* Footer & Checkout Action Buttons */}
           {cart.length > 0 && (
-            <div className="p-5 sm:p-6 border-t border-white/10 bg-[#16191e] space-y-3">
+            <div className="p-4 sm:p-6 pb-20 sm:pb-6 border-t border-white/10 bg-[#16191e] space-y-3">
               <div className="flex items-center justify-between text-xs text-[#d3cbbe]">
                 <span>Total Items:</span>
                 <span className="font-bold text-[#fdfbf7]">{totalItemsCount}</span>
@@ -325,7 +325,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="space-y-2 pt-1">
                 <button
                   onClick={handlePlaceOrderWhatsApp}
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] transition-all shadow-lg shadow-[#d48b38]/20"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold text-[#0d0f12] bg-[#d48b38] hover:bg-[#e29d4c] active:scale-95 transition-all shadow-lg shadow-[#d48b38]/20"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Place Order via WhatsApp</span>
@@ -333,7 +333,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                 <a
                   href={`tel:${restaurantData.phoneRaw}`}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-[#ede8df] bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-[#ede8df] bg-white/5 hover:bg-white/10 border border-white/10 active:scale-95 transition-all"
                 >
                   <Phone className="w-4 h-4 text-[#d48b38]" />
                   <span>Call to Order ({restaurantData.phone})</span>
