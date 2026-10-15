@@ -28,9 +28,9 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
           className="w-full h-full object-cover object-center scale-105 animate-[pulse_12s_ease-in-out_infinite_alternate]"
           loading="eager"
         />
-        {/* Multilayered rich dark vignettes */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f12] via-[#0d0f12]/80 to-black/60" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/50 to-[#0d0f12]/95" />
+        {/* Multilayered rich vignettes */}
+        <div className="hero-vignette-1 absolute inset-0 bg-gradient-to-t from-[#0d0f12] via-[#0d0f12]/80 to-black/60" />
+        <div className="hero-vignette-2 absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/50 to-[#0d0f12]/95" />
       </div>
 
       {/* 3D Canvas Ember & Particle Engine */}

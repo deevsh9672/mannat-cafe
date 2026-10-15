@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu as MenuIcon, X, ShoppingBag, Phone, MapPin, Coffee } from 'lucide-react';
+import { Menu as MenuIcon, X, ShoppingBag, Phone, MapPin, Coffee, Sun, Moon } from 'lucide-react';
 import { restaurantData, getRestaurantStatus } from '../data/restaurantData';
+import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   cartCount: number;
@@ -8,6 +9,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [status, setStatus] = useState(getRestaurantStatus());
@@ -54,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
           
           {/* 3D Floating Glass Island */}
           <div
-            className={`pointer-events-auto rounded-2xl sm:rounded-3xl transition-all duration-500 border ${
+            className={`nav-floating-island pointer-events-auto rounded-2xl sm:rounded-3xl transition-all duration-500 border ${
               isScrolled
                 ? 'bg-[#0f1115]/90 border-amber-500/35 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.9),0_0_30px_rgba(212,139,56,0.2)] backdrop-blur-2xl py-2.5 px-3 sm:px-6'
                 : 'bg-black/60 border-white/15 shadow-[0_15px_35px_rgba(0,0,0,0.7)] backdrop-blur-xl py-3 px-3 sm:px-7'
@@ -136,6 +138,27 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                   <Phone className="w-3.5 h-3.5 text-[#d48b38]" />
                   <span className="text-[11px] font-bold">Call</span>
                 </a>
+
+                {/* Theme Toggle (Light / Dark) */}
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="theme-toggle-btn flex items-center justify-center gap-1.5 p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-bold text-[#ede8df] hover:text-[#e29d4c] bg-white/5 hover:bg-white/10 border border-white/10 transition-all active:scale-95 shadow-sm"
+                  aria-label={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} theme`}
+                  title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} mode`}
+                >
+                  {theme === 'light' ? (
+                    <>
+                      <Sun className="w-4 h-4 text-amber-500 animate-[spin_10s_linear_infinite]" />
+                      <span className="hidden sm:inline text-[11px] tracking-wide font-bold">Light</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="w-4 h-4 text-indigo-400" />
+                      <span className="hidden sm:inline text-[11px] tracking-wide font-bold">Dark</span>
+                    </>
+                  )}
+                </button>
 
                 {/* 3D Tactile "Order Online" Button */}
                 <button
@@ -221,6 +244,30 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
           </div>
 
           <div onClick={(e) => e.stopPropagation()} className="space-y-3 pt-6">
+            {/* Theme Switcher in Mobile Drawer */}
+            <div className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10">
+              <span className="text-xs font-bold text-[#ede8df] flex items-center gap-2">
+                {theme === 'light' ? (
+                  <>
+                    <Sun className="w-4 h-4 text-amber-500" />
+                    <span>Theme: Luxury Light</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-4 h-4 text-indigo-400" />
+                    <span>Theme: Midnight Dark</span>
+                  </>
+                )}
+              </span>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="px-3 py-1.5 rounded-xl bg-amber-500/20 text-[#e29d4c] text-xs font-bold border border-amber-500/30 active:scale-95 transition-transform"
+              >
+                Switch to {theme === 'light' ? 'Dark' : 'Light'}
+              </button>
+            </div>
+
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1">
               <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#ede8df]">
                 <MapPin className="w-3.5 h-3.5 text-[#d48b38]" />
