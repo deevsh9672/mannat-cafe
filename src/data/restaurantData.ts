@@ -72,46 +72,46 @@ export interface RestaurantConfig {
 }
 
 export const restaurantData: RestaurantConfig = {
-  name: "Mannat Cafe & Restaurant",
-  tagline: "Good Food. Great Moments.",
-  shortDescription: "Fresh flavours, comforting food and a welcoming atmosphere in the heart of Dausa.",
-  fullAbout: "Mannat Cafe and Restaurant brings together comforting food, casual dining and a welcoming atmosphere in Vinayak Nagar, Dausa. Whether you're stopping by for a quick bite, enjoying a family meal or meeting friends, Mannat offers a relaxed place to enjoy a variety of Indian, Rajasthani, Chinese and popular fast-food favourites.",
-  phone: "+91 99296 60850",
-  phoneRaw: "9929660850",
-  whatsappNumber: "919929660850",
+  name: "The Prince Cafe",
+  tagline: "Serving Happiness in Every Cup ✨ Coffee, Snacks & Conversations",
+  shortDescription: "Handcrafted coffee, crispy snacks and warm conversations on NH-21 Agra Road, Kherli Mod, Dausa.",
+  fullAbout: "The Prince Cafe brings together handcrafted coffee, signature snacks, and a welcoming modern ambiance near Kherli Mod on NH-21 Agra Road, Dausa. Open 24 hours, whether you're stopping by for a midnight cold coffee, enjoying evening snacks with friends, or taking a refreshing highway break, The Prince Cafe offers the perfect cozy space to unwind.",
+  phone: "+91 63785 45535",
+  phoneRaw: "6378545535",
+  whatsappNumber: "916378545535",
   address: {
-    street: "Sainthal Road",
-    area: "Vinayak Nagar",
+    street: "Near Kherli Mod, NH-21 Agra Road",
+    area: "Kherli",
     city: "Dausa",
     state: "Rajasthan",
-    pincode: "303303",
-    plusCode: "V8XC+8QW",
-    full: "V8XC+8QW, Sainthal Rd, Vinayak Nagar, Dausa, Rajasthan 303303"
+    pincode: "303501",
+    plusCode: "WC62+3P8",
+    full: "WC62+3P8, Near Kherli Mod, NH-21 Agra Road, Dausa, Rajasthan 303501"
   },
   rating: {
-    score: 3.8,
+    score: 5.0,
     maxScore: 5.0,
-    reviewCount: 88,
+    reviewCount: 4,
     platform: "Google Reviews"
   },
-  priceRange: "₹200–₹400 per person",
+  priceRange: "₹150–₹350 per person",
   openingHours: {
-    openTime: "09:00",
-    closeTime: "23:00",
-    displayTime: "9:00 AM – 11:00 PM",
+    openTime: "00:00",
+    closeTime: "23:59",
+    displayTime: "Open 24 Hours",
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
   },
   features: [
+    "Open 24 Hours",
     "Outdoor Seating",
     "Family Friendly",
-    "Kids Menu",
-    "Drive-thru",
+    "Highway Stop",
     "Dine-in",
     "Takeaway",
     "Late-night Dining"
   ],
-  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Mannat+Cafe+and+Restaurant+Sainthal+Rd+Vinayak+Nagar+Dausa+Rajasthan+303303",
-  googleMapsEmbedUrl: "https://maps.google.com/maps?q=V8XC%2B8QW%20Sainthal%20Rd%20Vinayak%20Nagar%20Dausa%20Rajasthan%20303303&t=&z=15&ie=UTF8&iwloc=&output=embed",
+  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Prince+Cafe+Dausa+Kherli+Rajasthan+303501",
+  googleMapsEmbedUrl: "https://maps.google.com/maps?q=WC62%2B3P8%2C%20Dausa%2C%20Kherli%2C%20Rajasthan%20303501&t=&z=15&ie=UTF8&iwloc=&output=embed",
   
   categories: [
     "All",
@@ -603,47 +603,38 @@ export const restaurantData: RestaurantConfig = {
   reviews: [
     {
       id: "rev-1",
-      author: "Local Dausa Diner",
-      rating: 4,
+      author: "Dausa Highway Traveler",
+      rating: 5,
       date: "Google Review",
-      content: "Nice rooftop seating area with a cool breeze in the evening. The street food, samosas and sandwiches were fresh. Good place to hang out with friends in Vinayak Nagar.",
-      highlight: "Nice rooftop sitting area",
+      content: "Best cafe experience in Dausa! The frosted cold coffee and grilled sandwiches were fresh and delicious. Outstanding ambiance near Kherli Mod and open 24 hours!",
+      highlight: "5.0 Rating • Open 24 Hours",
       source: "Google"
     },
     {
       id: "rev-2",
-      author: "Verified Visitor",
-      rating: 4,
+      author: "Local Cafe Enthusiast",
+      rating: 5,
       date: "Google Review",
-      content: "Staff behaviour was polite and helpful. Good atmosphere for families on Sainthal Road. Outdoor seating is a big plus point.",
-      highlight: "Courteous staff & family friendly",
+      content: "Honoured to visit The Prince Cafe on NH-21 Agra Road. Very polite staff, quick service, and cozy atmosphere to relax with friends.",
+      highlight: "Superb Hospitality & Vibe",
       source: "Google"
     },
     {
       id: "rev-3",
-      author: "Weekend Guest",
-      rating: 3,
+      author: "Weekend Visitor",
+      rating: 5,
       date: "Google Review",
-      content: "Ambiance is relaxing and prices are within reasonable range (around ₹200-₹350). Service can be a bit slower during peak dinner hours, but the samosas, tea and puffs were enjoyable.",
-      highlight: "Relaxed ambiance & affordable",
+      content: "Serving happiness in every cup! Loved the hot snacks, samosas and tea. The late night hangout experience is unmatched in Dausa.",
+      highlight: "Happiness in Every Cup ✨",
       source: "Google"
     },
     {
       id: "rev-4",
-      author: "Casual Patron",
-      rating: 4,
+      author: "Verified Patron",
+      rating: 5,
       date: "Google Review",
-      content: "Good spot for fast food, samosa chaat and puffs in Dausa. Tried the cold coffee and fries, both were satisfying. Decent parking space nearby.",
-      highlight: "Tasty snacks & easy parking",
-      source: "Google"
-    },
-    {
-      id: "rev-5",
-      author: "Local Resident",
-      rating: 3,
-      date: "Google Review",
-      content: "Atmosphere is quite open and pleasant. Sometimes orders take time when it gets busy, but overall a decent cafe experience right here in Vinayak Nagar.",
-      highlight: "Open sitting & local landmark",
+      content: "Great food, reasonable prices and clean open ambiance. Must visit spot near Kherli Mod for tea and cold coffee lovers.",
+      highlight: "Top Rated Coffee Shop",
       source: "Google"
     }
   ],
@@ -654,8 +645,8 @@ export const restaurantData: RestaurantConfig = {
       title: "Rooftop & Outdoor Seating",
       category: "Ambience",
       image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",
-      alt: "Mannat Cafe outdoor and rooftop open seating area",
-      caption: "Spacious outdoor dining setup in Vinayak Nagar, Dausa with gentle open evening breezes."
+      alt: "The Prince Cafe outdoor and rooftop open seating area",
+      caption: "Spacious outdoor dining setup near Kherli Mod, Dausa with gentle open evening breezes."
     },
     {
       id: "gal-2",
@@ -663,7 +654,7 @@ export const restaurantData: RestaurantConfig = {
       category: "Food",
       image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1200&q=85",
       alt: "Golden crispy samosas and puffs served hot",
-      caption: "Our renowned freshly fried Desi Samosas and baked Vegetable Puffs with seasoned potato masala."
+      caption: "Our freshly prepared Desi Samosas and crispy puffs served hot with house chutneys."
     },
     {
       id: "gal-3",
@@ -671,15 +662,15 @@ export const restaurantData: RestaurantConfig = {
       category: "Interior",
       image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85",
       alt: "Warm wooden interior seating with soft lighting",
-      caption: "Warm, welcoming indoor dining tables designed for casual conversations and family meals."
+      caption: "Warm, welcoming indoor dining tables designed for casual conversations and friendly meetups."
     },
     {
       id: "gal-4",
-      title: "Sainthal Road Cafe Exterior",
+      title: "NH-21 Agra Road Cafe Exterior",
       category: "Exterior",
       image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85",
-      alt: "Front facade and approach on Sainthal Road",
-      caption: "Conveniently accessible on Sainthal Road with drive-thru & takeaway parking space."
+      alt: "Front facade and approach near Kherli Mod, NH-21 Agra Road Dausa",
+      caption: "Conveniently accessible near Kherli Mod on NH-21 Agra Road with parking space."
     },
     {
       id: "gal-5",
@@ -695,7 +686,7 @@ export const restaurantData: RestaurantConfig = {
       category: "Ambience",
       image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=85",
       alt: "Evening lights and relaxed cafe terrace vibe",
-      caption: "Warm evening lighting making Mannat a favorite late-night spot until 11:00 PM."
+      caption: "Warm evening lighting making The Prince Cafe a favorite 24-hour hangout spot."
     },
     {
       id: "gal-7",
@@ -707,54 +698,26 @@ export const restaurantData: RestaurantConfig = {
     },
     {
       id: "gal-8",
-      title: "Modern Frosted Cold Coffee",
+      title: "Signature Frosted Cold Coffee",
       category: "Food",
       image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1200&q=85",
       alt: "Frosted glass cold coffee with vanilla ice cream and cocoa dust",
-      caption: "Refreshing thick cold coffee and herbal teas served daily from 9:00 AM."
+      caption: "Refreshing thick cold coffee and specialty beverages served 24 hours daily."
     }
   ]
 };
 
 /**
- * Utility to check if restaurant is open right now based on Indian Standard Time
+ * Utility to check if restaurant is open right now (The Prince Cafe is Open 24 Hours)
  */
-export function getRestaurantStatus(openTimeStr = "09:00", closeTimeStr = "23:00"): {
+export function getRestaurantStatus(): {
   isOpen: boolean;
   statusText: string;
   subText: string;
 } {
-  const now = new Date();
-  
-  // Calculate current minutes in the day
-  const currentMinutes = now.getHours() * 60 + now.getMinutes();
-  
-  const [openH, openM] = openTimeStr.split(":").map(Number);
-  const [closeH, closeM] = closeTimeStr.split(":").map(Number);
-  
-  const openMinutes = openH * 60 + openM;
-  const closeMinutes = closeH * 60 + closeM;
-  
-  const isOpen = currentMinutes >= openMinutes && currentMinutes < closeMinutes;
-  
-  if (isOpen) {
-    return {
-      isOpen: true,
-      statusText: "Open Now",
-      subText: `Closes at ${formatHour(closeH, closeM)}`
-    };
-  } else {
-    return {
-      isOpen: false,
-      statusText: "Closed Now",
-      subText: `Opens at ${formatHour(openH, openM)} tomorrow`
-    };
-  }
-}
-
-function formatHour(h: number, m: number): string {
-  const ampm = h >= 12 ? "PM" : "AM";
-  const formattedH = h % 12 === 0 ? 12 : h % 12;
-  const formattedM = m < 10 ? `0${m}` : m;
-  return `${formattedH}:${formattedM} ${ampm}`;
+  return {
+    isOpen: true,
+    statusText: "Open 24 Hours",
+    subText: "24/7 Service • Open All 7 Days"
+  };
 }

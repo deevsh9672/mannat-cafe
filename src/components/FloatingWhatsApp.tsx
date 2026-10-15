@@ -6,7 +6,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const defaultMsg = encodeURIComponent(
-    "Hello Mannat Cafe & Restaurant, I would like to know more about your menu/order options."
+    "Hello The Prince Cafe, I would like to know more about your menu/order options."
   );
 
   return (
@@ -28,7 +28,7 @@ export const FloatingWhatsApp: React.FC = () => {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         className="w-13 h-13 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-xl shadow-emerald-500/30 hover:scale-110 active:scale-95 transition-all pulse-glow"
-        aria-label="Chat with Mannat Cafe on WhatsApp"
+        aria-label="Chat with The Prince Cafe on WhatsApp"
       >
         <MessageCircle className="w-6 h-6 fill-current" />
       </a>

@@ -11,7 +11,7 @@ export const ContactSection: React.FC = () => {
   const handleSendInquiry = (e: React.FormEvent) => {
     e.preventDefault();
     const encoded = encodeURIComponent(
-      `Hello Mannat Cafe & Restaurant,\n\n` +
+      `Hello The Prince Cafe,\n\n` +
       `*Name:* ${guestName || 'Guest'}\n` +
       `*Inquiry Type:* ${inquiryType}\n` +
       `*Party Size:* ${guestCount}\n` +
@@ -21,7 +21,7 @@ export const ContactSection: React.FC = () => {
   };
 
   const directWhatsappLink = `https://wa.me/${restaurantData.whatsappNumber}?text=${encodeURIComponent(
-    "Hello Mannat Cafe & Restaurant, I would like to know more about your menu/order options."
+    "Hello The Prince Cafe, I would like to know more about your menu/order options."
   )}`;
 
   return (
@@ -52,7 +52,7 @@ export const ContactSection: React.FC = () => {
                   Official Business Card
                 </span>
                 <h3 className="font-serif-title text-2xl sm:text-3xl font-bold text-[#fdfbf7] mt-1">
-                  Mannat Cafe &amp; Restaurant
+                  The Prince Cafe
                 </h3>
               </div>
 
@@ -66,7 +66,7 @@ export const ContactSection: React.FC = () => {
                       Location
                     </div>
                     <div className="text-sm sm:text-base text-[#ede8df] font-medium mt-0.5">
-                      Vinayak Nagar, Sainthal Road, Dausa, Rajasthan 303303
+                      {restaurantData.address.full}
                     </div>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export const ContactSection: React.FC = () => {
                       Phone Number
                     </div>
                     <div className="text-sm sm:text-base text-[#ede8df] font-medium mt-0.5">
-                      +91 99296 60850
+                      {restaurantData.phone}
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export const ContactSection: React.FC = () => {
                       Hours of Operation
                     </div>
                     <div className="text-sm sm:text-base text-[#ede8df] font-medium mt-0.5">
-                      9:00 AM – 11:00 PM (Monday – Sunday)
+                      Open 24 Hours (Monday – Sunday)
                     </div>
                   </div>
                 </div>

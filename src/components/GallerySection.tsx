@@ -59,7 +59,7 @@ export const GallerySection: React.FC = () => {
             Moments, Ambience &amp; Cuisines
           </h2>
           <p className="text-sm sm:text-base text-[#b0a99c]">
-            A glimpse into the dining corners, outdoor seating, and freshly prepared dishes at Mannat Cafe.
+            A glimpse into the dining corners, outdoor seating, and freshly prepared dishes at The Prince Cafe.
           </p>
         </div>
 

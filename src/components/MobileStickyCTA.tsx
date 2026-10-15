@@ -14,7 +14,7 @@ export const MobileStickyCTA: React.FC<MobileStickyCTAProps> = ({
   onOpenAssistant,
 }) => {
   const whatsappUrl = `https://wa.me/${restaurantData.whatsappNumber}?text=${encodeURIComponent(
-    "Hello Mannat Cafe & Restaurant Dausa, I would like to place an order / check today's specials."
+    "Hello The Prince Cafe Dausa, I would like to place an order / check today's specials."
   )}`;
 
   return (

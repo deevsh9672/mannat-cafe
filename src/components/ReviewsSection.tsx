@@ -51,7 +51,7 @@ export const ReviewsSection: React.FC = () => {
               What Our Guests Say
             </h2>
             <p className="text-sm sm:text-base text-[#b0a99c] mt-2 max-w-xl">
-              Transparent, genuine impressions from diners in Vinayak Nagar and visitors across Dausa.
+              Transparent, genuine impressions from diners and visitors across Dausa.
             </p>
           </div>
 

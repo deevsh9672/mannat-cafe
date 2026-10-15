@@ -53,10 +53,10 @@ export const InstagramGrid: React.FC = () => {
             <span>Social &amp; Visuals</span>
           </div>
           <h2 className="font-serif-title text-2xl sm:text-3xl lg:text-4xl font-bold text-[#fdfbf7] tracking-tight">
-            Follow the Mannat Experience
+            Follow The Prince Cafe
           </h2>
           <p className="text-xs sm:text-sm text-[#b0a99c] mt-2">
-            Share your dining moments, tag us during your visits in Vinayak Nagar, and discover our daily culinary specials.
+            Serving happiness in every cup ✨ Tag <span className="text-[#e29d4c] font-semibold">@the_prince_cafe__</span> during your visits in Dausa.
           </p>
         </div>
 
@@ -92,17 +92,27 @@ export const InstagramGrid: React.FC = () => {
           ))}
         </div>
 
-        {/* Action Connect Button */}
-        <div className="mt-8 text-center">
+        {/* Action Connect Buttons */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://www.instagram.com/the_prince_cafe__/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-[#fdfbf7] bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 shadow-md transition-all"
+          >
+            <Camera className="w-3.5 h-3.5" />
+            <span>@the_prince_cafe__ on Instagram</span>
+          </a>
+
           <a
             href={`https://wa.me/${restaurantData.whatsappNumber}?text=${encodeURIComponent(
-              "Hello Mannat Cafe & Restaurant, I saw your website and would like to connect!"
+              "Hello The Prince Cafe, I saw your website and would like to connect!"
             )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold text-[#ede8df] bg-white/5 hover:bg-white/10 border border-white/10 transition-all hover:border-[#d48b38]/40"
           >
-            <span>Connect on WhatsApp for Updates</span>
+            <span>Connect on WhatsApp</span>
           </a>
         </div>
 

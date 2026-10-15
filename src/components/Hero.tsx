@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=85"
-          alt="Mannat Cafe and Restaurant Ambience in Dausa"
+          alt="The Prince Cafe Ambience in Dausa"
           className="w-full h-full object-cover object-center scale-105 animate-[pulse_12s_ease-in-out_infinite_alternate]"
           loading="eager"
         />
@@ -61,24 +61,24 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
                 {status.isOpen ? 'Open Now' : 'Closed'}
               </span>
               <span className="text-white/20">•</span>
-              <span>Daily 9 AM – 11 PM</span>
+              <span>Open 24 Hours</span>
               <span className="text-white/20 hidden xs:inline">•</span>
-              <span className="hidden xs:inline">Sainthal Rd, Dausa</span>
+              <span className="hidden xs:inline">Kherli Mod, Dausa</span>
             </div>
 
             {/* Main Luxury Title */}
             <div>
               <h1 className="font-brand text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold tracking-wider text-[#fdfbf7] leading-tight drop-shadow-md">
-                MANNAT <span className="bg-gradient-to-r from-[#f2ae58] via-[#e29d4c] to-[#d48b38] bg-clip-text text-transparent">CAFE</span>
+                THE PRINCE <span className="bg-gradient-to-r from-[#f2ae58] via-[#e29d4c] to-[#d48b38] bg-clip-text text-transparent">CAFE</span>
               </h1>
               <p className="font-serif-title text-base sm:text-2xl text-[#d48b38] italic font-normal tracking-wide mt-1 sm:mt-1.5">
-                &ldquo;Authentic Flavours, Modern Ambiance&rdquo;
+                &ldquo;Serving Happiness in Every Cup ✨&rdquo;
               </p>
             </div>
 
             {/* Minimalist Subtext - Short, elegant & clean */}
             <p className="max-w-lg text-xs sm:text-base text-[#ccc4b6] leading-relaxed font-light mx-auto lg:mx-0">
-              Handcrafted frosted cold coffees, crispy savoury snacks, and traditional regional dining under the open Dausa sky.
+              Handcrafted frosted cold coffees, crispy savoury snacks, and warm conversations on NH-21 Agra Road, Dausa.
             </p>
 
             {/* 3 Clean Signature Badges */}
@@ -141,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onAddToCart = () => {} }) => {
             aria-label="Scroll down"
           >
             <span className="text-[10px] tracking-widest uppercase font-medium group-hover:tracking-wider transition-all">
-              Discover Mannat Dining
+              Discover The Prince Cafe
             </span>
             <ChevronDown className="w-4 h-4 animate-bounce" />
           </a>

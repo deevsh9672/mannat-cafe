@@ -18,7 +18,7 @@ export const LocationSection: React.FC = () => {
   const adjustedTodayIndex = currentDayIndex === 0 ? 6 : currentDayIndex - 1;
 
   const whatsappMessage = encodeURIComponent(
-    "Hello Mannat Cafe & Restaurant, I would like to know more about your menu/order options."
+    "Hello The Prince Cafe, I would like to know more about your menu/order options."
   );
 
   return (
@@ -32,10 +32,10 @@ export const LocationSection: React.FC = () => {
             <span>Visit Us</span>
           </div>
           <h2 className="font-serif-title text-3xl sm:text-4xl lg:text-5xl font-bold text-[#fdfbf7] tracking-tight mb-4">
-            Find Mannat Cafe
+            Find The Prince Cafe
           </h2>
           <p className="text-sm sm:text-base text-[#b0a99c]">
-            Conveniently situated on Sainthal Road in Vinayak Nagar, Dausa with rooftop seating and parking.
+            Conveniently situated near Kherli Mod on NH-21 Agra Road, Dausa.
           </p>
         </div>
 
@@ -45,8 +45,8 @@ export const LocationSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl h-80 sm:h-96 relative bg-black/40">
               <iframe
-                title="Mannat Cafe and Restaurant Google Maps Location"
-                src="https://maps.google.com/maps?q=Mannat+Cafe+and+Restaurant+Vinayak+Nagar+Dausa&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="The Prince Cafe Google Maps Location"
+                src={restaurantData.googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -155,7 +155,7 @@ export const LocationSection: React.FC = () => {
                       )}
                     </div>
                     <span className={isToday ? 'text-[#e29d4c]' : 'text-[#a59f93]'}>
-                      9:00 AM – 11:00 PM
+                      {restaurantData.openingHours.displayTime}
                     </span>
                   </div>
                 );
@@ -165,7 +165,7 @@ export const LocationSection: React.FC = () => {
             {/* Subtext info */}
             <div className="mt-6 pt-5 border-t border-white/10 text-xs text-[#8f897d] flex items-center justify-between">
               <span>{status.subText}</span>
-              <span>Kitchen open till 10:45 PM</span>
+              <span>Open 24 Hours • 7 Days</span>
             </div>
           </div>
 

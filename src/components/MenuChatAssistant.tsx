@@ -43,7 +43,7 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
     {
       id: 'welcome',
       sender: 'bot',
-      text: "Namaste! 🙏 Welcome to Mannat Cafe & Restaurant Dausa. I am your Digital Menu Assistant. All dish prices are now live! Ask me anything or tap a recommendation below:",
+      text: "Namaste! 🙏 Welcome to The Prince Cafe Dausa. I am your Digital Menu Assistant. All dish prices are now live! Ask me anything or tap a recommendation below:",
       recommendations: [
         restaurantData.menu.find((m) => m.id === 'snack-samosa')!, // Samosa
         restaurantData.menu.find((m) => m.id === 'snack-1')!, // Vegetable Puffs
@@ -175,7 +175,7 @@ export const MenuChatAssistant: React.FC<MenuChatAssistantProps> = ({
               </div>
               <div>
                 <h3 className="text-xs sm:text-sm font-bold text-[#fdfbf7] flex items-center gap-1.5">
-                  <span>Mannat Menu AI</span>
+                  <span>The Prince Menu AI</span>
                   <Sparkles className="w-3 h-3 text-[#d48b38]" />
                 </h3>
                 <span className="text-[9px] sm:text-[10px] text-emerald-400 flex items-center gap-1">

@@ -22,10 +22,10 @@ export const SeoJsonLd: React.FC = () => {
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Sainthal Road, Vinayak Nagar",
-      "addressLocality": "Dausa",
-      "addressRegion": "Rajasthan",
-      "postalCode": "303303",
+      "streetAddress": restaurantData.address.street,
+      "addressLocality": `${restaurantData.address.city}, ${restaurantData.address.area}`,
+      "addressRegion": restaurantData.address.state,
+      "postalCode": restaurantData.address.pincode,
       "addressCountry": "IN"
     },
     "openingHoursSpecification": [
@@ -40,8 +40,8 @@ export const SeoJsonLd: React.FC = () => {
           "Saturday",
           "Sunday"
         ],
-        "opens": "09:00",
-        "closes": "23:00"
+        "opens": "00:00",
+        "closes": "23:59"
       }
     ],
     "aggregateRating": {
@@ -51,8 +51,8 @@ export const SeoJsonLd: React.FC = () => {
       "bestRating": "5",
       "worstRating": "1"
     },
-    "url": "https://mannatcafedausa.com/",
-    "hasMenu": "https://mannatcafedausa.com/#menu",
+    "url": "https://theprincecafedausa.com/",
+    "hasMenu": "https://theprincecafedausa.com/#menu",
     "potentialAction": {
       "@type": "OrderAction",
       "target": {

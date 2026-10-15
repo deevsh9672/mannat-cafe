@@ -18,15 +18,15 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex flex-col">
               <span className="font-brand text-2xl font-bold tracking-widest text-[#f5f0e8]">
-                MANNAT
+                THE PRINCE
               </span>
               <span className="text-xs tracking-[0.25em] text-[#d48b38] uppercase font-semibold">
-                Cafe &amp; Restaurant
+                Cafe • Dausa
               </span>
             </div>
             
             <p className="text-xs sm:text-sm text-[#8f897d] max-w-sm leading-relaxed">
-              Fresh flavours, comforting food and a welcoming atmosphere in the heart of Vinayak Nagar, Dausa. Dedicated to quality taste and memorable moments.
+              Serving happiness in every cup ✨ Handcrafted coffee, crispy snacks and warm conversations near Kherli Mod on NH-21 Agra Road, Dausa.
             </p>
 
             <div className="pt-2">
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#d48b38] shrink-0 mt-0.5" />
                 <span>
-                  Vinayak Nagar, Sainthal Road, Dausa, Rajasthan 303303
+                  {restaurantData.address.full}
                 </span>
               </div>
               <div className="text-[11px] text-[#7d776c]">
@@ -119,8 +119,8 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2 pt-1">
                 <Clock className="w-4 h-4 text-[#d48b38] shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-[#fdfbf7] font-medium">9:00 AM – 11:00 PM</div>
-                  <div className="text-[11px] text-[#7d776c]">Open All 7 Days</div>
+                  <div className="text-[#fdfbf7] font-medium">Open 24 Hours</div>
+                  <div className="text-[11px] text-[#7d776c]">All 7 Days • Round the Clock</div>
                 </div>
               </div>
             </div>
@@ -131,11 +131,11 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#7d776c] gap-4">
           <div>
-            © 2026 Mannat Cafe &amp; Restaurant. All rights reserved.
+            © 2026 The Prince Cafe. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="hover:text-[#a59f93]">Authentic Dausa Dining</span>
+            <span className="hover:text-[#a59f93]">Serving Happiness in Every Cup ✨</span>
             <button
               onClick={scrollToTop}
               className="inline-flex items-center gap-1.5 text-xs text-[#d48b38] hover:text-[#e29d4c] transition-colors"

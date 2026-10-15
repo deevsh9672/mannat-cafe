@@ -87,7 +87,7 @@ export function App() {
         {/* Hero Info Metric Cards with 3D Tilt */}
         <HeroStatsCards />
 
-        {/* About Mannat Cafe */}
+        {/* About The Prince Cafe */}
         <AboutSection />
 
         {/* Customer Favourites with Multi-Layer 3D Depth Cards */}

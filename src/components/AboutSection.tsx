@@ -7,7 +7,7 @@ export const AboutSection: React.FC = () => {
     { title: "Family Friendly", desc: "Spacious seating suitable for all ages" },
     { title: "Outdoor Seating", desc: "Open-air & rooftop dining experience" },
     { title: "Kids Menu", desc: "Puffs, fries, pasta & gentle flavours" },
-    { title: "Drive-thru", desc: "Quick curbside pickup on Sainthal Rd" },
+    { title: "Highway Stop", desc: "Quick curbside pickup on NH-21 Agra Rd" },
     { title: "Dine-in", desc: "Warm & relaxed atmosphere to unwind" },
     { title: "Takeaway", desc: "Freshly packed hot meals on the go" },
   ];
@@ -27,14 +27,14 @@ export const AboutSection: React.FC = () => {
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
                 <img
                   src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
-                  alt="Mannat Cafe interior and seating ambience"
+                  alt="The Prince Cafe interior and seating ambience"
                   className="w-full h-80 sm:h-96 object-cover transform group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-[#d3cbbe]">
-                  <span className="font-semibold text-[#fdfbf7]">Mannat Cafe &amp; Restaurant</span>
-                  <span>Vinayak Nagar, Dausa</span>
+                  <span className="font-semibold text-[#fdfbf7]">The Prince Cafe</span>
+                  <span>Near Kherli Mod, Dausa</span>
                 </div>
               </div>
 
@@ -60,7 +60,7 @@ export const AboutSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs text-[#a59f93] font-medium">Welcoming Diners</div>
-                  <div className="text-sm font-bold text-[#fdfbf7]">Daily 9 AM – 11 PM</div>
+                  <div className="text-sm font-bold text-[#fdfbf7]">Open 24 Hours • 7 Days</div>
                 </div>
               </div>
             </div>
@@ -70,7 +70,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-[#d48b38] uppercase">
               <span className="w-6 h-0.5 bg-[#d48b38]" />
-              <span>About Mannat Cafe</span>
+              <span>About The Prince Cafe</span>
             </div>
 
             <h2 className="font-serif-title text-3xl sm:text-4xl lg:text-5xl font-bold text-[#fdfbf7] tracking-tight leading-tight">
@@ -85,11 +85,11 @@ export const AboutSection: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-2 border-y border-white/10 text-xs sm:text-sm text-[#b0a99c]">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#d48b38] shrink-0" />
-                <span>Vinayak Nagar, Sainthal Rd, Dausa (303303)</span>
+                <span>Near Kherli Mod, NH-21 Agra Rd, Dausa (303501)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#d48b38] shrink-0" />
-                <span>Open All 7 Days: 9:00 AM – 11:00 PM</span>
+                <span>Open All 7 Days: Open 24 Hours</span>
               </div>
             </div>
 

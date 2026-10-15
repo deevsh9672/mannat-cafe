@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
                         textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(212,139,56,0.25)',
                       }}
                     >
-                      MANNAT
+                      THE PRINCE
                     </span>
                     <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#d48b38]" />
                   </div>
@@ -224,10 +224,10 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center space-y-1">
               <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#ede8df]">
                 <MapPin className="w-3.5 h-3.5 text-[#d48b38]" />
-                <span>Vinayak Nagar, Sainthal Rd, Dausa</span>
+                <span>Near Kherli Mod, NH-21 Agra Rd, Dausa</span>
               </div>
               <div className="text-[10px] text-[#a59f93]">
-                Daily 9:00 AM – 11:00 PM • Outdoor Rooftop &amp; Drive-thru
+                Open 24 Hours • Authentic Dausa Cafe
               </div>
             </div>
 
@@ -236,7 +236,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-[#d48b38] text-[#0d0f12] text-xs sm:text-sm font-bold shadow-lg shadow-[#d48b38]/30 active:scale-95 transition-transform"
             >
               <Phone className="w-4 h-4" />
-              <span>Direct Call: +91 99296 60850</span>
+              <span>Direct Call: {restaurantData.phone}</span>
             </a>
           </div>
         </div>

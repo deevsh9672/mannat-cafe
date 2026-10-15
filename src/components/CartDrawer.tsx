@@ -57,7 +57,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     const totalEstimateText = knownTotal > 0 ? `\n*Subtotal Estimate:* ₹${knownTotal}` : '';
 
     const message =
-      `*NEW ORDER - MANNAT CAFE & RESTAURANT*\n` +
+      `*NEW ORDER - THE PRINCE CAFE DAUSA*\n` +
       `--------------------------------------\n` +
       `*Customer:* ${details.customerName || 'Valued Guest'}\n` +
       `*Phone:* ${details.phone || 'Not provided'}\n` +
@@ -266,8 +266,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                         details.orderType === 'dine-in'
                           ? 'e.g. Table 4 Rooftop'
                           : details.orderType === 'takeaway'
-                          ? 'e.g. Sainthal Rd curbside pickup in 15 mins'
-                          : 'e.g. Vinayak Nagar near Sainthal Rd'
+                          ? 'e.g. Highway curbside pickup in 15 mins'
+                          : 'e.g. Near Kherli Mod, NH-21 Agra Rd'
                       }
                       className="w-full bg-[#16191e] border border-white/10 rounded-xl px-3 py-2 text-xs text-[#fdfbf7] placeholder-[#6d685e] focus:outline-none focus:border-[#d48b38]"
                     />

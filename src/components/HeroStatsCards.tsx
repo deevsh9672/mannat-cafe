@@ -22,16 +22,16 @@ export const HeroStatsCards: React.FC = () => {
     {
       id: 'hours',
       icon: <Clock className="w-5 h-5 text-[#d48b38]" />,
-      main: "9 AM – 11 PM",
-      sub: "Open Daily • 7 Days",
-      badge: "All-Day Dining"
+      main: "Open 24/7",
+      sub: "Round-the-Clock Service",
+      badge: "Open 24 Hours"
     },
     {
       id: 'location',
       icon: <MapPin className="w-5 h-5 text-[#d48b38]" />,
       main: "Dausa",
-      sub: "Vinayak Nagar, Sainthal Rd",
-      badge: "Easy Access"
+      sub: "Near Kherli Mod, NH-21",
+      badge: "Highway Spot"
     }
   ];
 

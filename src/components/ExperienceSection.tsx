@@ -13,7 +13,7 @@ export const ExperienceSection: React.FC = () => {
     {
       icon: <TreePine className="w-5 h-5 text-emerald-400" />,
       title: "Outdoor & Rooftop Seating",
-      desc: "Open-air sitting area capturing fresh evening breezes on Sainthal Road with scenic views."
+      desc: "Open-air sitting area capturing fresh evening breezes on NH-21 Agra Road with scenic views."
     },
     {
       icon: <Users className="w-5 h-5 text-amber-400" />,
@@ -27,13 +27,13 @@ export const ExperienceSection: React.FC = () => {
     },
     {
       icon: <Car className="w-5 h-5 text-orange-400" />,
-      title: "Drive-thru & Quick Pickup",
-      desc: "Convenient roadside parking on Sainthal Road for hassle-free parcel pickups and quick takeaway."
+      title: "Highway Stop & Quick Pickup",
+      desc: "Convenient roadside parking on NH-21 Agra Road for hassle-free parcel pickups and quick takeaway."
     },
     {
       icon: <Moon className="w-5 h-5 text-indigo-400" />,
-      title: "Evening & Late-night Dining",
-      desc: "Kitchen open until 11:00 PM every day to satisfy your late-night snack and hot kulhad chai cravings."
+      title: "Open 24 Hours Dining",
+      desc: "Serving 24 hours round-the-clock every day to satisfy your midnight snack and cold coffee cravings."
     }
   ];
 
@@ -48,7 +48,7 @@ export const ExperienceSection: React.FC = () => {
               <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.9)] group">
                 <img
                   src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85"
-                  alt="Mannat Cafe relaxing evening ambience in Dausa"
+                  alt="The Prince Cafe relaxing evening ambience in Dausa"
                   className="w-full h-[450px] sm:h-[540px] object-cover transform group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
@@ -84,7 +84,7 @@ export const ExperienceSection: React.FC = () => {
                 More Than Just a Meal
               </h2>
               <p className="text-sm sm:text-base text-[#b0a99c] mt-3">
-                At Mannat Cafe &amp; Restaurant, we believe good dining is about sharing conversations, savoring freshly brewed tea, and enjoying comforting bites in a cozy setting.
+                At The Prince Cafe, we believe good dining is about sharing conversations, savoring freshly brewed coffee and tea, and enjoying comforting bites in a cozy setting.
               </p>
             </div>
 
